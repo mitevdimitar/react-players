@@ -1,0 +1,27 @@
+#container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0;
+}
+
+.dashboard>nav>ul {
+    display: flex;
+
+}
+
+.dashboard>nav>ul li:not(:last-child) {
+    padding-right: 1rem;
+}
+
+.dashboard .navbar {
+    justify-content: center;
+}
+
+.dashboard h1 {
+    text-align: center;
+    margin: 0rem;
+    padding: 2rem 0 1rem 0;
+}
