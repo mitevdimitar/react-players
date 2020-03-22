@@ -1,7 +1,7 @@
 import React from 'react';
 import './All.css';
 import Header from './Header/Header';
-import PetDetail from './Pets/PetDetail';
+import PlayerDetail from './Pets/PlayerDetail';
 import Players from './Pets/PlayerList';
 
 function Home() {
@@ -15,7 +15,7 @@ function Home() {
             <Header user ={user}/>
             <section className="basic">
                 <h1> Welcome to pet my pet!</h1>
-                <PetDetail pet = {Players[0]}/>
+                <PlayerDetail pet = {Players[0]}/>
             </section>
         </div>
     );
