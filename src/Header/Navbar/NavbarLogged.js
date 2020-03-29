@@ -1,11 +1,12 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 function NavbarLogged(props) {
     return (
         <div>
             <section className="navbar-dashboard">
                 <div className="first-bar">
-                    <a href="#/dashboard">Dashboard</a>
+                    <Link to="/dashboard">Dashboard</Link>
                     <a className="button" href="#/mypets">My Pets</a>
                     <a className="button" href="#/add">Add Pet</a>
                 </div>

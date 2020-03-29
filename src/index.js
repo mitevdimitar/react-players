@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Dashboard from './Dashboard/Dashboard';
-import Home from './Home'
+import Navigation from './Navigation'
 
-ReactDOM.render(<Dashboard />, document.getElementById('root'));
+ReactDOM.render(<Navigation />, document.getElementById('root'));

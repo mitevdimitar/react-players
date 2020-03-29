@@ -1,63 +1,23 @@
 /* Home css */
 
-.basic {
-    background: linear-gradient(rgba(250, 248, 248, 0.2), rgba(25, 167, 173, 0.2)), url(img/We-need-to-talk-about-pets.jpg) no-repeat center;
-    background-size: cover;
-    height: 85vh;
-    position: relative;
-    overflow: hidden;
-}
-
-#site-content>section.basic {
-    text-align: center;
-}
-
-a {
-    text-decoration: none;
-    display: inline-block;
-}
-
 li {
     list-style-type: none;
 }
 
-/* Pets */
-.fa-heart {
-    color: red;
-}
-
-.button {
-    display: block;
-    padding: 0.6rem 1rem;
-    border-radius: 0.4rem;
-    text-decoration: none;
-    font-weight: bold;
-    background: cadetblue;
-    color: rgb(255, 255, 255);
-    border: none;
-    font-size: 1rem;
-}
+/* Details and Delete Pets / Players */
 
 .detailsOtherPet,
 .detailsMyPet,
-.deletePet,
-.otherPet,
-.myPet {
+.deletePet {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .detailsMyPet>p:nth-child(2),
-.deletePet>p:nth-child(2),
-.otherPet>p:nth-child(2),
-.myPet>p:nth-child(2) {
+.deletePet>p:nth-child(2) {
     font-size: 1.2rem;
     font-weight: bold;
-}
-
-.pet-info {
-    padding-bottom: 1rem;
 }
 
 .deletePet>form,
@@ -67,47 +27,17 @@ li {
     padding-bottom: 1rem;
 }
 
-.my-pets .my-pets-list,
-.dashboard .other-pets-list {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.detailsMyPet textarea,
-.my-pets textarea {
+.detailsMyPet textarea {
     margin-bottom: 2rem;
 }
 
-/* Other css  */
+/* Other css - Login and Register; footer and notifications  */
 
 .login form,
 .register form,
 .create form {
     margin: 5rem auto;
 }
-
-.basic h1,
-.my-pets h1 {
-    text-align: center;
-    margin: 0rem;
-    padding: 2rem 0 1rem 0;
-}
-
-
-footer {
-    margin-top: auto;
-    text-align: center;
-    background: #234465;
-}
-
-footer p {
-    padding: 1rem 0;
-    font-weight: bold;
-    margin: 0rem;
-    color: white;
-}
-
 
 #notifications {
     float: right;

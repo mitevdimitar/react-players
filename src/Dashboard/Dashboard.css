@@ -25,3 +25,9 @@
     margin: 0rem;
     padding: 2rem 0 1rem 0;
 }
+
+.dashboard .other-players-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}

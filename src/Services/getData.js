@@ -4,6 +4,21 @@ const getData = {
         .then(res => {
             return res.json();
         })
+    },
+    teamName: (team) => {
+        if (team === 'manutd') {
+            return 'Man Utd';
+        } else if (team === 'liverpool') {
+            return 'Liverpool';
+        } else if (team === 'chelsea') {
+            return 'Chelsea';
+        } else if (team === 'mancity') {
+            return 'Man City';
+        } else if (team === 'arsenal') {
+            return 'Arsenal';
+        } else if (team === 'other') {
+            return 'Other';
+        }
     }
 }
 

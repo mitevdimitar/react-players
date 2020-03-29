@@ -16,16 +16,18 @@ class Dashboard extends React.Component {
     state = {
             allPlayers: []
         }
-    
+
     render() {
+        //let team = this.props.match.params.team
+        //team ? console.log(team) : console.log('Main dashboard');
         return (
         <div id="container">
             <Header user={user}/>
             <div className="dashboard">
                 <h1>Dashboard</h1>
                 <DashboardNav />
-                <ul className="other-pets-list">
-                    {listPlayers(this.state.allPlayers)}
+                <ul className="other-players-list">
+                    {listPlayers(this.state.allPlayers, this.props.match.params.team)}
                 </ul>
             </div>
         </div>
@@ -35,7 +37,7 @@ class Dashboard extends React.Component {
         getData.players()
         .then(data => {
                 this.setState({ allPlayers: data });
-        })
+        });
     }
     
 }

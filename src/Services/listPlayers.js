@@ -1,23 +1,31 @@
 import React from 'react';
-import PlayerDetail from '../Pets/PlayerDetail';
+import PlayerInfo from '../Players/PlayerInfo/PlayerInfo';
+import PlayerInfoButtons from '../Players/PlayerInfo/PlayerInfoButtons';
 import firebase from '../Services/firebase';
+import getData from './getData';
+import './listPlayers.css'
 
-const firebaseData = firebase.database().ref();
+/* const firebaseData = firebase.database().ref();
 firebaseData.on('value', (res) => {
     console.log(res.val())
 })
-
-const listPlayers = (players) => {
+ */
+const listPlayers = (players, team) => {
+    let teamName = getData.teamName(team);
     return (
         players.length !== 0 ? 
-        players.map(otherPlayer => {
-            return <li className="otherPet">
-                <PlayerDetail key={otherPlayer.id} player={otherPlayer}/>
-                <div className="pet-info">
-                <a href="#"><button className="button"><i className="fas fa-heart"></i> Pet</button></a>
-                <a href="#"><button className="button">Details</button></a>
-                <i className="fas fa-heart"></i> <span> 2</span>
-                </div>
+        players
+        .filter(player => {
+            if (team) {
+                return player.team === teamName;
+            } else {
+                return player
+            }
+        })
+        .map(otherPlayer => {
+            return <li key={otherPlayer._id} className="otherPlayer">
+                <PlayerInfo player={otherPlayer}/>
+                <PlayerInfoButtons />
                 </li>
         })
         :

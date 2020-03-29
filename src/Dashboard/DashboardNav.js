@@ -1,15 +1,17 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 function DashboardNav() {
     return(
         <nav className="navbar">
                     <ul>
-                        <li><a href="#">All</a></li>
-                        <li><a href="#">Cats</a></li>
-                        <li><a href="#">Dogs</a></li>
-                        <li><a href="#">Parrots</a></li>
-                        <li><a href="#">Reptiles</a></li>
-                        <li><a href="#">Other</a></li>
+                        <li><Link to="/Dashboard">All</Link></li>
+                        <li><Link to="/Dashboard/manutd">Man Utd</Link></li>
+                        <li><Link to="/Dashboard/liverpool">Liverpool</Link></li>
+                        <li><Link to="/Dashboard/mancity">Man City</Link></li>
+                        <li><Link to="/Dashboard/chelsea">Chelsea</Link></li>
+                        <li><Link to="/Dashboard/arsenal">Arsenal</Link></li>
+                        <li><Link to="/Dashboard/other">Other</Link></li>
                     </ul>
                 </nav>       
     )

@@ -1,0 +1,24 @@
+a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.basic {
+    background: linear-gradient(rgba(250, 248, 248, 0.2), rgba(25, 167, 173, 0.2)), url(../img/soccer.jpg) no-repeat center;
+    background-size: cover;
+    height: 85vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.basic h1 {
+    text-align: left;
+    margin: 0rem;
+    padding: 23rem 0 0 2rem;
+    font-size: 320%;
+    color: #e8e6e6;
+}
+
+#site-content>section.basic {
+    text-align: center;
+}
