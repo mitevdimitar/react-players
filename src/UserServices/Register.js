@@ -1,12 +1,64 @@
 import React from 'react';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import EmailInput from './EmailInput';
+import PasswordInput from './PasswordInput';
+import firebase from '../Services/firebase';
+import { Redirect } from "react-router-dom";
+import './LoginRegister.css'
 
-class Register extends React.component {
-    state = {
+class Register extends React.Component {
+    
+    constructor(props) {
+        super(props);
+        this.state={
+            email: '',
+            password: '',
+            redirect: null
+        };
+        this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.handleUserRegister = this.handleUserRegister.bind(this);
+    }
 
+    handleEmailChange(e) {
+        this.setState({email: e.target.value});
+    }
+
+    handlePasswordChange(e) {
+        this.setState({password: e.target.value});
+    }
+
+    handleUserRegister(e) {
+        e.preventDefault();
+        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+            .then(this.setState({ redirect: "/" }))
+            .catch(function(error) {
+                var errorMessage = error.message;
+                console.log(errorMessage);
+            });
     }
 
     render() {
-        return
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect} />
+          }
+        return (
+            <div>
+                <Header />
+                <section className="register">
+                    <form action="#/register" method="post">
+                        <fieldset>
+                            <legend>Register</legend>
+                            <EmailInput email={this.state.email} handleEmailChange={this.handleEmailChange}/>
+                            <PasswordInput password={this.state.password} handlePasswordChange={this.handlePasswordChange}/>
+                            <input className="button submit" type="submit" value="Register" onClick={this.handleUserRegister}/>
+                        </fieldset>
+                    </form>
+                </section>
+                <Footer/>
+            </div>
+        )
     }
 }
 

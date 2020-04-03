@@ -9,17 +9,17 @@
     font-weight: bold;
 }
 
-.my-pets .my-pets-list {
+.my-players .my-players-list {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
 
-.my-pets textarea {
+.my-playerss textarea {
     margin-bottom: 2rem;
 }
 
-.my-pets h1 {
+.my-players h1 {
     text-align: center;
     margin: 0rem;
     padding: 2rem 0 1rem 0;

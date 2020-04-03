@@ -1,15 +1,15 @@
 import React from 'react';
+import firebase from './firebase';
 import PlayerInfo from '../Players/PlayerInfo/PlayerInfo';
 import PlayerInfoButtons from '../Players/PlayerInfo/PlayerInfoButtons';
-import firebase from '../Services/firebase';
 import getData from './getData';
 import './listPlayers.css'
 
-/* const firebaseData = firebase.database().ref();
+const firebaseData = firebase.database().ref();
 firebaseData.on('value', (res) => {
     console.log(res.val())
 })
- */
+
 const listPlayers = (players, team) => {
     let teamName = getData.teamName(team);
     return (

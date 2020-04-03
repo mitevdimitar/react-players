@@ -1,24 +1,49 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import firebase from '../../Services/firebase';
+import {Link, Redirect} from 'react-router-dom';
 
-function NavbarLogged(props) {
-    return (
-        <div>
-            <section className="navbar-dashboard">
-                <div className="first-bar">
-                    <Link to="/dashboard">Dashboard</Link>
-                    <a className="button" href="#/mypets">My Pets</a>
-                    <a className="button" href="#/add">Add Pet</a>
-                </div>
-                <div className="second-bar">
-                    <ul>
-                        <li>Welcome, {props.user.name}!</li>
-                        <li><a href="#/logout"><i className="fas fa-sign-out-alt"></i> Logout</a></li>
-                    </ul>
-                </div>
-            </section>
-        </div>
-    )
+class NavbarLogged extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state={
+            redirect: null
+        };
+        this.handleUserLogout = this.handleUserLogout.bind(this);
+    }
+
+    handleUserLogout(e) {
+        e.preventDefault();
+        firebase.auth().signOut().then(() => {
+            this.setState({ redirect: "/" })
+          }).catch(function(error) {
+            console.log(error)
+          });
+    }
+
+    render() {
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect} />
+        }
+        return (
+            <div>
+                <section className="navbar-dashboard">
+                    <div className="first-bar">
+                        <Link to="/dashboard">Rankings</Link>
+                        <a className="button" href="/myplayers">My Players</a>
+                        <a className="button" href="/add">Add Player</a>
+                    </div>
+                    <div className="second-bar">
+                        <ul>
+                            <li>Welcome!</li>
+                            <li><Link to="/logout" onClick={this.handleUserLogout}><i className="fas fa-sign-out-alt"></i> Logout</Link></li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        )
+    }
+    
 }
 
 export default NavbarLogged

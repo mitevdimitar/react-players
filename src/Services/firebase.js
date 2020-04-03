@@ -1,14 +1,16 @@
-import firebase from 'firebase';
+import firebase from 'firebase'
+import 'firebase/auth'
+import 'firebase/app'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDjsPT0rbE6TOwtzXCAvGxIZtTgRyxIbXI",
-  authDomain: "players-c7ea6.firebaseapp.com",
-  databaseURL: "https://players-c7ea6.firebaseio.com",
-  projectId: "players-c7ea6",
-  storageBucket: "players-c7ea6.appspot.com",
-  messagingSenderId: "560866261990",
-  appId: "1:560866261990:web:4b653574fc5e5cf7f1f427",
-  measurementId: "G-0RFNZW6726"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  databaseURL: process.env.REACT_APP_BASEURL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
 
 firebase.initializeApp(firebaseConfig);

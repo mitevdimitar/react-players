@@ -31,14 +31,6 @@ li {
     margin-bottom: 2rem;
 }
 
-/* Other css - Login and Register; footer and notifications  */
-
-.login form,
-.register form,
-.create form {
-    margin: 5rem auto;
-}
-
 #notifications {
     float: right;
     position: absolute;

@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Header/Header';
 import DashboardNav from './DashboardNav';
+import Footer from '../Footer/Footer';
 import './Dashboard.css'
 import getData from '../Services/getData';
 import listPlayers from '../Services/listPlayers';
@@ -24,12 +25,13 @@ class Dashboard extends React.Component {
         <div id="container">
             <Header user={user}/>
             <div className="dashboard">
-                <h1>Dashboard</h1>
+                <h1>Rankings</h1>
                 <DashboardNav />
                 <ul className="other-players-list">
                     {listPlayers(this.state.allPlayers, this.props.match.params.team)}
                 </ul>
             </div>
+            <Footer />
         </div>
     )}
 
