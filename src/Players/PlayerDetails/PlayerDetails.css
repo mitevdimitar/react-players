@@ -1,0 +1,21 @@
+.detailsOtherPlayer,
+.detailsMyPlayer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detailsMyPlayer>p:nth-child(2) {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.detailsMyPlayer>form {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+}
+
+.detailsMyPlayer textarea {
+    margin-bottom: 2rem;
+}

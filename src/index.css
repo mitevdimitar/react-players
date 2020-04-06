@@ -55,7 +55,9 @@ ul, ol {
 
 li {
 	list-style-position: inside;
+    list-style-type: none;
 }
+
 blockquote {
 	width: 80%;
 	margin: 0 auto;

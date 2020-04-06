@@ -2,11 +2,11 @@ import React from 'react';
 import Navbar from './Navbar/Navbar';
 import './Header.css'
 
-function Header(props) {
+function Header() {
     return (
         <header id="site-header">
             <nav className="navbar">
-                <Navbar {...props}/>
+                <Navbar />
             </nav>
         </header>
     );

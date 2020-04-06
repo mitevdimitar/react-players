@@ -29,9 +29,9 @@ class NavbarLogged extends React.Component {
             <div>
                 <section className="navbar-dashboard">
                     <div className="first-bar">
-                        <Link to="/dashboard">Rankings</Link>
-                        <a className="button" href="/myplayers">My Players</a>
-                        <a className="button" href="/add">Add Player</a>
+                        <Link className="button" to="/dashboard">Rankings</Link>
+                        <Link className="button"  to="/myplayers">My Players</Link>
+                        <Link className="button" to="/addplayer">Add Player</Link>
                     </div>
                     <div className="second-bar">
                         <ul>
