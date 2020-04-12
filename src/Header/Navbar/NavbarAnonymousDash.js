@@ -10,8 +10,8 @@ function NavbarAnonymousDash() {
                 </div>
                 <div className="second-bar">
                     <ul>
-                        <li><a href="#/register"><i className="fas fa-user-plus"></i> Register</a></li>
-                        <li><a href="#/login"><i className="fas fa-sign-in-alt"></i> Login</a></li>
+                        <li><a className="nav-button" href="#/register"><i className="fas fa-user-plus"></i> Register</a></li>
+                        <li><a className="nav-button" href="#/login"><i className="fas fa-sign-in-alt"></i> Login</a></li>
                     </ul>
                 </div>
             </section>

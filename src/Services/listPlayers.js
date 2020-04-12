@@ -2,7 +2,7 @@ import React from 'react';
 //import firebase from './firebase';
 import PlayerInfo from '../Players/PlayerInfo/PlayerInfo';
 import PlayerInfoButtons from '../Players/PlayerInfo/PlayerInfoButtons';
-import getData from './getData';
+import handleData from './handleData';
 import './listPlayers.css'
 
 /* const firebaseData = firebase.database().ref();
@@ -12,7 +12,7 @@ firebaseData.on('value', (res) => {
 
 const listPlayers = {
     listAll: (players, team) => {
-        let teamName = getData.teamName(team);
+        let teamName = handleData.teamName(team);
         return (
             players.length !== 0 ? 
             players
@@ -26,7 +26,7 @@ const listPlayers = {
             .map(otherPlayer => {
                 return <li key={otherPlayer._id} className="otherPlayer">
                     <PlayerInfo player={otherPlayer}/>
-                    <PlayerInfoButtons isMyPlayer={false}/>
+                    <PlayerInfoButtons id={otherPlayer.getId} isMyPlayer={false}/>
                     </li>
             })
             :
@@ -45,7 +45,7 @@ const listPlayers = {
             .map(myPlayer => {
                 return <li key={myPlayer._id} className="myPlayer">
                     <PlayerInfo player={myPlayer}/>
-                    <PlayerInfoButtons isMyPlayer={true}/>
+                    <PlayerInfoButtons id={myPlayer.getId} isMyPlayer={true}/>
                     </li>
             })
             :

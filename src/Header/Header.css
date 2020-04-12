@@ -6,7 +6,7 @@ nav.navbar {
   letter-spacing: 0.05rem;
   background: #234465;
   padding: 0.8rem 1rem;
-  color: white;
+  color: rgba(237, 244, 253, 0.966);
 }
 #site-header > nav > section.navbar-dashboard > a{
     list-style: none;
@@ -41,8 +41,8 @@ nav.navbar ul li a {
   border-radius: 0.4rem;
   text-decoration: none;
   font-weight: bold;
-  background: cadetblue;
-  color: rgb(255, 255, 255);
+  background: #234465;
+  color: rgba(237, 244, 253, 0.966);
 }
 .button:hover,
 nav.navbar ul li a:hover,
@@ -56,6 +56,7 @@ nav.navbar ul li:hover > a {
 }
 .navbar-dashboard{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;    
     width: 95vw;
 }
@@ -64,7 +65,7 @@ nav.navbar ul li:hover > a {
     align-items: center;
 }
 .navbar .first-bar a{
-    color: white;
+    /* color: white; */
     margin-right: 0.5rem;
 }
 .navbar .first-bar input{  
@@ -78,13 +79,32 @@ nav.navbar ul li:hover > a {
     display: flex;
     align-items: center;
 }
+.second-bar {
+    float: right;
+}
 .navbar .second-bar ul{
     display: flex;
-    align-items: center;
+    align-items: center
 }
 .navbar .second-bar ul li{
     margin-right: 0.5rem;
 }
 .navbar-anonymous ul{
     display: flex;
+}
+
+.nav-button {
+    border: 2px solid white;
+    background: transparent;
+}
+
+.nav-first-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nav-second-line {
+    display: flex;
+    justify-content: center;
 }

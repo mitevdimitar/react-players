@@ -26,21 +26,24 @@ class NavbarLogged extends React.Component {
             return <Redirect to={this.state.redirect} />
         }
         return (
-            <div>
                 <section className="navbar-dashboard">
-                    <div className="first-bar">
-                        <Link className="button" to="/dashboard">Rankings</Link>
-                        <Link className="button"  to="/myplayers">My Players</Link>
-                        <Link className="button" to="/addplayer">Add Player</Link>
+                    <div className="nav-first-line">
+                        <div className="first-bar">
+                            <Link className="button" to="/dashboard">Rankings</Link>
+                            <Link className="button" to="/myplayers">My Players</Link>
+                            <Link className="button" to="/addplayer">Add Player</Link>
+                        </div>
+                        <div className="second-bar">
+                            <ul>
+                                <li>Welcome!</li>
+                                <li><Link className="nav-button" to="/logout" onClick={this.handleUserLogout}><i className="fas fa-sign-out-alt"></i> Logout</Link></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div className="second-bar">
-                        <ul>
-                            <li>Welcome!</li>
-                            <li><Link to="/logout" onClick={this.handleUserLogout}><i className="fas fa-sign-out-alt"></i> Logout</Link></li>
-                        </ul>
-                    </div>
+                    {/* <div className="nav-second-line">
+                        <h1> My Favorite PL Player</h1>
+                    </div> */}
                 </section>
-            </div>
         )
     }
     

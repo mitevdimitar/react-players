@@ -1,7 +1,5 @@
 import React from 'react';
-import Header from '../../Header/Header';
-import Footer from '../../Footer/Footer';
-import getData from '../../Services/getData';
+import handleData from '../../Services/handleData';
 import listPlayers from '../../Services/listPlayers';
 import './MyPlayers.css'
 
@@ -13,23 +11,24 @@ class MyPlayers extends React.Component {
     }
 
 componentDidMount() {
-    getData.players()
+    handleData.retreivePlayers()
     .then(data => {
-            this.setState({ myPlayers: data });
+        let playersArr = Object.values(data);
+        this.setState({ myPlayers: playersArr });
     });
+    /* handleData.retreivePlayers('0')
+    .then(data => {
+        console.log(data)
+    }) */
 }
     render() {
         return (
-            <React.Fragment>
-                <Header/>
                 <section class="my-players">
                     <h1>My Players</h1>
                     <ul class="my-players-list">
                         {listPlayers.listMy(this.state.myPlayers, this.state.creator)}
                     </ul>
                 </section>
-                <Footer/>
-            </React.Fragment>
         )
     }
 }

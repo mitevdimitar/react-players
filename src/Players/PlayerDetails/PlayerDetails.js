@@ -1,21 +1,49 @@
-import React from 'react';
+import React, {Component} from 'react';
+import handleData from '../../Services/handleData';
 import './PlayerDetails.css'
 
-const player = {
+/* const player = {
     isMyPlayer: true,
     name: "Mitko",
     likes: 3,
     description: "My Description",
     imageURL: "https://lh3.googleusercontent.com/proxy/7s72jjAKC1Ys1sYWT-ppu5zfPDQQawsiAikakS385uOgHK1Hgu_s7dnzKopipd_m1dMpfaqx4EvuSsDdgqcOkH9o9NopRWGlPqr1MyURbQta"
+} */
+
+class PlayerDetails extends Component {
+
+    state = {
+        player: {
+            isMyPlayer: false,
+            name: "",
+            likes: 0,
+            description: "",
+            imageURL: ""
+        }
+    }
+
+    componentDidMount() {
+        handleData.retreivePlayers(this.props.match.params.id)
+            .then(data => {
+                this.setState({ player: {
+                    isMyPlayer: true,
+                    name: data.name,
+                    likes: data.likes,
+                    description: data.description,
+                    imageURL: data.imageURL
+                } });
+    });
 }
 
-function PlayerDetails() {
+
+    render() {
+        let {player} = this.state;
     if (player.isMyPlayer) {
         return (
             <div className="detailsMyPlayer">
                 <h3>{player.name}</h3>
                 <p>Player likes: <i className="fas fa-heart"></i>{player.likes}</p>
-                <p className="img"><img src={player.imageURL} alt="playerImage"/>></p>
+                <p className="img"><img src={player.imageURL} alt="playerImage"/></p>
                 <form action="#" method="POST">
                     <textarea type="text" name="description">{player.description}</textarea>
                     <button className="button"> Save</button>
@@ -33,6 +61,8 @@ function PlayerDetails() {
                 <p className="description">{player.description}</p>
             </section>
         )
+    }
+    
     }
     
 }

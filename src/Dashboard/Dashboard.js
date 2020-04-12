@@ -1,16 +1,8 @@
 import React from 'react';
-import Header from '../Header/Header';
 import DashboardNav from './DashboardNav';
-import Footer from '../Footer/Footer';
 import './Dashboard.css'
-import getData from '../Services/getData';
+import handleData from '../Services/handleData';
 import listPlayers from '../Services/listPlayers';
-
-let user = {
-    name: "Mitko",
-    age: 15,
-    isLogged: true
-};
 
 class Dashboard extends React.Component {
 
@@ -19,10 +11,12 @@ class Dashboard extends React.Component {
         }
 
     componentDidMount() {
-        getData.players()
-        .then(data => {
-                this.setState({ allPlayers: data });
+        handleData.retreivePlayers()
+            .then(data => {
+                let playersArr = Object.values(data);
+                this.setState({ allPlayers: playersArr });
         });
+        //handleData.retreivePlayers()
     }
 
     render() {
@@ -30,7 +24,6 @@ class Dashboard extends React.Component {
         //team ? console.log(team) : console.log('Main dashboard');
         return (
         <div id="container">
-            <Header user={user}/>
             <div className="dashboard">
                 <h1>Rankings</h1>
                 <DashboardNav />
@@ -38,7 +31,6 @@ class Dashboard extends React.Component {
                     {listPlayers.listAll(this.state.allPlayers, this.props.match.params.team)}
                 </ul>
             </div>
-            <Footer />
         </div>
     )}
     

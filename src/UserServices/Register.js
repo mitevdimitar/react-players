@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 import EmailInput from './EmailInput';
 import PasswordInput from './PasswordInput';
 import firebase from '../Services/firebase';
@@ -45,7 +43,6 @@ class Register extends React.Component {
           }
         return (
             <div>
-                <Header />
                 <section className="register">
                     <form action="#/register" method="post">
                         <fieldset>
@@ -56,7 +53,6 @@ class Register extends React.Component {
                         </fieldset>
                     </form>
                 </section>
-                <Footer/>
             </div>
         )
     }

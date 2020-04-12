@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 import EmailInput from './EmailInput';
 import PasswordInput from './PasswordInput';
 import firebase from '../Services/firebase';
@@ -11,25 +9,23 @@ class Login extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             email: '',
             password: '',
             redirect: null
         };
-        this.handleEmailChange = this.handleEmailChange.bind(this);
-        this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        this.handleUserLogin = this.handleUserLogin.bind(this);
+        //this.handleEmailChange = this.handleEmailChange.bind(this);
     }
 
-    handleEmailChange(e) {
+    handleEmailChange = (e) => {
         this.setState({email: e.target.value});
     }
 
-    handlePasswordChange(e) {
+    handlePasswordChange = (e) => {
         this.setState({password: e.target.value});
     }
 
-    handleUserLogin(e) {
+    handleUserLogin = (e) => {
         e.preventDefault();
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then(this.setState({ redirect: "/" }))
@@ -44,7 +40,6 @@ class Login extends React.Component {
             return <Redirect to={this.state.redirect} />
           }
         return <div>
-        <Header user={this.props.user}/>
         <section className="login">
         <form action="#/login" method="post">
         <fieldset>
@@ -55,7 +50,6 @@ class Login extends React.Component {
         </fieldset>
         </form>
         </section>
-        <Footer />
     </div>
     }
        

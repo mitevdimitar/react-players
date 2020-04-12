@@ -1,17 +1,15 @@
-/* Delete Pets / Players */
-
-.deletePet {
+.deletePlayer {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.deletePet>p:nth-child(2) {
+.deletePlayer>p:nth-child(2) {
     font-size: 1.2rem;
     font-weight: bold;
 }
 
-.deletePet>form {
+.deletePlayer>form {
     display: flex;
     flex-direction: column;
     padding-bottom: 1rem;
