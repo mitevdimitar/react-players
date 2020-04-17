@@ -1,31 +1,13 @@
 import React from 'react';
 import NavbarLogged from './NavbarLogged';
 import NavbarAnonymous from './NavbarAnonymous';
-import firebase from '../../Services/firebase';
 
 class Navbar extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state={
-            user: null
-        };
-    }
-
-    componentDidMount() {
-        firebase.auth().onAuthStateChanged((userInfo) => {
-            if (userInfo) {
-                this.setState({user: userInfo})
-            } else {
-                this.setState({user: null})
-            }
-          });
-    }
-
     render() {
-        if (this.state.user) {
+        if (this.props.user) {
             return (
-                <NavbarLogged user={this.props}/>
+                <NavbarLogged user={this.props.user}/>
             )
         } else {
             return (

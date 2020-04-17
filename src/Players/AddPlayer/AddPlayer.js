@@ -1,17 +1,19 @@
 import React from 'react';
-import firebase from '../../Services/firebase';
 import handleData from '../../Services/handleData';
 
 class AddPlayer extends React.Component {
 
     state = {
+        creator: this.props.user.uid,
         name: "",
         description: "",
         imageURL: "",
         team: "",
-        _id: "kfefojsncaspncojdoahSFd",
-        getId: "4"
- 
+        _id: "",
+        getId: "",
+        likes: 0,
+        loading: false,
+        errorMessage: ""
     }
 
     handleNameChange = (e) => {
@@ -33,21 +35,39 @@ class AddPlayer extends React.Component {
    
     handleSubmit = (e) => {
         let player = this.state;
-
         e.preventDefault();
-        firebase.auth().currentUser.getIdToken(true)
-        .then(function(idToken) {
-            handleData.postPlayer(idToken, player)
+        if (this.state.name === "") {
+            this.setState({errorMessage: "All fields are required!"})
+        } else {
+            this.setState({errorMessage: ""})
+            this.setState({loading:true})
+            handleData.postPlayer(player)
                 .then((data) => {
-                  console.log('Success:', data);
-                })
+                    player.getId = data.name;
+                    handleData.putPlayer(data.name, player)
+                        .then(() => {
+                            this.setState({
+                                loading: false,
+                                name: "",                                
+                                description: "",
+                                imageURL: "",
+                                team: ""
+                            })
+                            //window.location.href='/addplayer' 
+                        })
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                    })
                 .catch((error) => {
-                  console.error('Error:', error);
+                    console.error('Error:', error);
                 });
-          }).catch(function(error) {
-            console.log(error)
-          });
-          
+            }
+    }
+
+    componentDidMount() {
+        let generatedId = Math.floor(Math.random() * 100000000000000);
+        this.setState({_id: generatedId});
     }
 
     render() {
@@ -95,6 +115,8 @@ class AddPlayer extends React.Component {
                             </span>
                         </p>
                         <input className="button submit" type="submit" value="Add Player" />
+                        {this.state.errorMessage ? <p>{this.state.errorMessage}</p> : <div></div>}
+                        {this.state.loading ? <span>Loading</span> : <span></span>}
                     </fieldset>
                 </form>
             </section>

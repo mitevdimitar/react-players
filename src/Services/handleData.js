@@ -1,3 +1,5 @@
+import firebase from './firebase'
+
 const handleData = {
     retreivePlayers: (id) => {
         let url = id ? `https://players-c7ea6.firebaseio.com/${id}/.json` : 'https://players-c7ea6.firebaseio.com/.json';
@@ -6,15 +8,41 @@ const handleData = {
             return res.json();
         })
     },
-    postPlayer: (token, player) => {
-        return fetch(`https://players-c7ea6.firebaseio.com/.json?auth=${token}`, {
-            method: 'POST', // or 'PUT'
+    postPlayer: (player) => {
+        return firebase.auth().currentUser.getIdToken(true)
+        .then(function(idToken) {
+            return fetch(`https://players-c7ea6.firebaseio.com/.json?auth=${idToken}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(player),
+                })
+            .then((response) => {
+                return response.json()
+            })
+        })
+        .catch(function(error) {
+            console.log(error)
+        });
+    },
+    putPlayer: (id, player) => {
+        return firebase.auth().currentUser.getIdToken(true)
+        .then(function(idToken) {
+            return fetch(`https://players-c7ea6.firebaseio.com/${id}.json?auth=${idToken}`, {
+            method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(player),
             })
-            .then((response) => response.json())
+            .then((response) => {
+                return response.json()
+            })
+        })
+        .catch(function(error) {
+            console.log(error)
+        });
     },
     teamName: (team) => {
         if (team === 'manutd') {
