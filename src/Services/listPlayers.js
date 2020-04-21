@@ -26,7 +26,7 @@ const listPlayers = {
             .map(otherPlayer => {
                 return <li key={otherPlayer._id} className="otherPlayer">
                     <PlayerInfo player={otherPlayer}/>
-                    <PlayerInfoButtons id={otherPlayer.getId} isMyPlayer={false}/>
+                    <PlayerInfoButtons player={otherPlayer} isMyPlayer={false}/>
                     </li>
             })
             :
@@ -40,12 +40,12 @@ const listPlayers = {
             players.length !== 0 ? 
             players
             .filter(player => {
-                return player._acl.creator === id;
+                return player.creator === id;
             })
             .map(myPlayer => {
                 return <li key={myPlayer._id} className="myPlayer">
                     <PlayerInfo player={myPlayer}/>
-                    <PlayerInfoButtons id={myPlayer.getId} isMyPlayer={true}/>
+                    <PlayerInfoButtons player={myPlayer} isMyPlayer={true}/>
                     </li>
             })
             :

@@ -40,9 +40,6 @@ class NavbarLogged extends React.Component {
                             </ul>
                         </div>
                     </div>
-                    {/* <div className="nav-second-line">
-                        <h1> My Favorite PL Player</h1>
-                    </div> */}
                 </section>
         )
     }

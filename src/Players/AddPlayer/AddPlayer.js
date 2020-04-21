@@ -1,5 +1,11 @@
 import React from 'react';
 import handleData from '../../Services/handleData';
+import ReactLoading from 'react-loading';
+import NameImput from './NameInput';
+import DescriptionImput from './DescriptionInput';
+import ImageImput from './ImageInput';
+import TeamSelect from './TeamSelect';
+import './AddPlayer.css'
 
 class AddPlayer extends React.Component {
 
@@ -34,27 +40,25 @@ class AddPlayer extends React.Component {
     
    
     handleSubmit = (e) => {
-        let player = this.state;
         e.preventDefault();
-        if (this.state.name === "") {
+        if (this.state.name === "" || this.state.description === "" || 
+        this.state.imageURL === "" || this.state.team === "") {
             this.setState({errorMessage: "All fields are required!"})
         } else {
+            let player = this.state;
             this.setState({errorMessage: ""})
             this.setState({loading:true})
             handleData.postPlayer(player)
                 .then((data) => {
+                    this.setState({
+                        loading: false,
+                        name: "",                                
+                        description: "",
+                        imageURL: "",
+                        team: ""
+                    });
                     player.getId = data.name;
                     handleData.putPlayer(data.name, player)
-                        .then(() => {
-                            this.setState({
-                                loading: false,
-                                name: "",                                
-                                description: "",
-                                imageURL: "",
-                                team: ""
-                            })
-                            //window.location.href='/addplayer' 
-                        })
                         .catch((error) => {
                             console.error('Error:', error);
                         });
@@ -77,46 +81,13 @@ class AddPlayer extends React.Component {
                 <form onSubmit={this.handleSubmit} action="#/add" method="post">
                     <fieldset>
                         <legend>Add PL Player</legend>
-                        <p className="field">
-                            <label htmlFor="name">Name</label>
-                            <span className="input">
-                                <input onChange={this.handleNameChange} type="text" name="name" id="name" placeholder="Name" />
-                                <span className="actions"></span>
-                            </span>
-                        </p>
-                        <p className="field">
-                            <label htmlFor="description">Description</label>
-                            <span className="input">
-                                <textarea onChange={this.handleDescriptionChange} rows="4" cols="45" type="text" name="description" id="description"
-                                    placeholder="Description"></textarea>
-                                <span className="actions"></span>
-                            </span>
-                        </p>
-                        <p className="field">
-                            <label htmlFor="image">Image</label>
-                            <span className="input">
-                                <input onChange={this.handleImageChange} type="text" name="imageURL" id="image" placeholder="Image" />
-                                <span className="actions"></span>
-                            </span>
-                        </p>
-                        <p className="field">
-                            <label htmlFor="team">Team</label>
-                            <span className="input">
-                                <select onChange={this.handleTeamChange} type="text" name="team" required>
-                                    <option>Select Team</option>
-                                    <option>Man Utd</option>
-                                    <option>Liverpool</option>
-                                    <option>Man City</option>
-                                    <option>Chelsea</option>
-                                    <option>Arsenal</option>
-                                    <option>Other</option>
-                                </select>
-                                <span className="actions"></span>
-                            </span>
-                        </p>
+                        <NameImput handleNameChange={this.handleNameChange} name={this.state.name}/>
+                        <DescriptionImput handleDescriptionChange={this.handleDescriptionChange} description={this.state.description}/>
+                        <ImageImput handleImageChange={this.handleImageChange} imageURL={this.state.imageURL}/>
+                        <TeamSelect handleTeamChange={this.handleTeamChange} team={this.state.team}/>
                         <input className="button submit" type="submit" value="Add Player" />
-                        {this.state.errorMessage ? <p>{this.state.errorMessage}</p> : <div></div>}
-                        {this.state.loading ? <span>Loading</span> : <span></span>}
+                        {this.state.errorMessage ? <p className="error-message">{this.state.errorMessage}</p> : <div></div>}
+                        {this.state.loading ? <span><ReactLoading type={"bars"} color={"#000000"} height={45} width={45} /></span> : <span></span>}
                     </fieldset>
                 </form>
             </section>

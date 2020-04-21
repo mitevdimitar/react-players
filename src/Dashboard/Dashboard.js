@@ -20,8 +20,6 @@ class Dashboard extends React.Component {
     }
 
     render() {
-        //let team = this.props.match.params.team
-        //team ? console.log(team) : console.log('Main dashboard');
         return (
         <div id="container">
             <div className="dashboard">

@@ -19,3 +19,7 @@
 .detailsMyPlayer textarea {
     margin-bottom: 2rem;
 }
+
+.player-likes {
+    margin-right: 10px
+}

@@ -45,9 +45,12 @@ class App extends React.Component {
                     <Route path="/login" component={Login} />
                     <Route path="/register" component={Register} />
                     <Route path="/dashboard/:team?" component={Dashboard} />
-                    <Route path="/myplayers" component={MyPlayers} />
                     <Route path="/player-details/:id" component={PlayerDetails}/>
                     <Route path="/delete" component={DeletePlayer}/>
+                    {this.state.user ? (
+                    <Route path="/myplayers" render={() => <MyPlayers user={this.state.user}/>} />
+                    ) : (
+                    <Redirect to="/" />)}
                     {this.state.user ? (
                     <Route path="/addplayer" render={() => <AddPlayer user={this.state.user} />}/>
                     ) : (

@@ -6,8 +6,8 @@ import './MyPlayers.css'
 class MyPlayers extends React.Component {
 
     state = {
+        user: this.props.user.uid,
         myPlayers: [],
-        creator: "5bb0874caccb650325e0227b"
     }
 
 componentDidMount() {
@@ -16,17 +16,27 @@ componentDidMount() {
         let playersArr = Object.values(data);
         this.setState({ myPlayers: playersArr });
     });
-    /* handleData.retreivePlayers('0')
-    .then(data => {
-        console.log(data)
-    }) */
 }
+
+componentDidUpdate() {
+    console.log(this.state.myPlayers.length)
+    if(this.state.myPlayers.length === 0) {
+        let footer = document.getElementById("site-footer");
+        footer.style.position = "absolute";
+    }
+}
+
+componentWillUnmount() {
+    let footer = document.getElementById("site-footer");
+    footer.style.position = "";
+}
+
     render() {
         return (
-                <section class="my-players">
+                <section className="my-players">
                     <h1>My Players</h1>
-                    <ul class="my-players-list">
-                        {listPlayers.listMy(this.state.myPlayers, this.state.creator)}
+                    <ul className="my-players-list">
+                        {listPlayers.listMy(this.state.myPlayers, this.state.user)}
                     </ul>
                 </section>
         )
