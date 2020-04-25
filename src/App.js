@@ -22,16 +22,19 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-            user: null
+            user: null,
+            isLogged: false
         };
     }
 
     componentDidMount() {
         firebase.auth().onAuthStateChanged((userInfo) => {
             if (userInfo) {
-                this.setState({user: userInfo})
+                this.setState({user: userInfo,
+                isLogged:true})
             } else {
-                this.setState({user: null})
+                this.setState({user: null,
+                isLogged: false})
             }
           });
     }
@@ -45,8 +48,8 @@ class App extends React.Component {
                     <Route path="/login" component={Login} />
                     <Route path="/register" component={Register} />
                     <Route path="/dashboard/:team?" component={Dashboard} />
-                    <Route path="/player-details/:id" component={PlayerDetails}/>
-                    <Route path="/delete" component={DeletePlayer}/>
+                    <Route exact path="/player-details/:id" component={PlayerDetails}/>
+                    <Route path="/delete/:id" component={DeletePlayer}/>
                     {this.state.user ? (
                     <Route path="/myplayers" render={() => <MyPlayers user={this.state.user}/>} />
                     ) : (

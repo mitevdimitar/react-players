@@ -44,6 +44,20 @@ const handleData = {
             console.log(error)
         });
     },
+    deletePlayer: (id) => {
+        return firebase.auth().currentUser.getIdToken(true)
+        .then(function(idToken) {
+            return fetch(`https://players-c7ea6.firebaseio.com/${id}.json?auth=${idToken}`, {
+            method: 'DELETE'
+            })
+            .then((response) => {
+                return response.json()
+            })
+        })
+        .catch(function(error) {
+            console.log(error)
+        });
+    },
     teamName: (team) => {
         if (team === 'manutd') {
             return 'Man Utd';

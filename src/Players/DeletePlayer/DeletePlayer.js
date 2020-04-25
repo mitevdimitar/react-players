@@ -1,26 +1,54 @@
-import React from 'react';
+import React, {Component} from 'react';
+import handleData from '../../Services/handleData';
+import firebase from '../../Services/firebase';
 import './DeletePlayer.css'
 
-const dplayer = {
-    isMyPlayer: true,
-    name: "Mitko",
-    likes: 3,
-    description: "My Description",
-    imageURL: "https://lh3.googleusercontent.com/proxy/7s72jjAKC1Ys1sYWT-ppu5zfPDQQawsiAikakS385uOgHK1Hgu_s7dnzKopipd_m1dMpfaqx4EvuSsDdgqcOkH9o9NopRWGlPqr1MyURbQta"
-}
+class DeletePlayer extends Component {
 
-function DeletePlayer() {
-        return (
-            <div className="deletePlayer">
-                <h3>{dplayer.name}</h3>
-                <p>Player likes: <i className="fas fa-heart"></i>{dplayer.likes}</p>
-                <p className="img"><img src={dplayer.imageURL} alt="playerImage"/>></p>
-                <form action="#" method="POST">
+    state = {
+        isMyPlayer: false,
+        name: "",
+        likes: 0,
+        description: "",
+        imageURL: ""
+    }
+
+    deletePlayer = (e) => {
+        e.preventDefault();
+        handleData.deletePlayer(this.props.match.params.id)
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
+    componentDidMount() {
+        firebase.auth().onAuthStateChanged((userInfo) => {
+            if (userInfo) {
+                handleData.retreivePlayers(this.props.match.params.id)
+                .then(data => {
+                    this.setState({
+                        isMyPlayer: userInfo.uid === data.creator,
+                        name: data.name,
+                        likes: data.likes,
+                        description: data.description,
+                        imageURL: data.imageURL
+                    });
+                });
+            }
+        });
+    }
+        render() {
+            let dplayer = {...this.state}
+            return (
+                <div className="deletePlayer">
+                    <h3>{dplayer.name}</h3>
+                    <p>Player likes: <i className="fas fa-heart"></i>{dplayer.likes}</p>
+                    <p className="img"><img src={dplayer.imageURL} alt="playerImage"/></p>
                     <p className="description">{dplayer.description}</p>
-                    <button className="button">Delete</button>
-                </form>
-            </div>
-        )
+                    <a onClick={this.deletePlayer} href="#" className="details-button">Delete</a>
+                </div>
+            )
+        }
     }
 
 export default DeletePlayer;
