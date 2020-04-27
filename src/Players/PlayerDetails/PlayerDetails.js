@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import handleData from '../../Services/handleData';
 import firebase from '../../Services/firebase';
+import Notification from '../../Notification/Notification';
 import './PlayerDetails.css'
 
 class PlayerDetails extends Component {
@@ -91,7 +92,7 @@ class PlayerDetails extends Component {
                 <p className="img"><img src={player.imageURL} alt="playerImage"/></p>
                 <textarea type="text" value={player.description} onChange={this.getDescription} name="description"></textarea>
                 <a href="#" className="details-button" onClick={this.updatePlayerInfo}>Save</a>
-                <div id="success">Succesfully updated player info</div>
+                <Notification message="Succesfully updated player info" />
             </div>
         )
     } else {

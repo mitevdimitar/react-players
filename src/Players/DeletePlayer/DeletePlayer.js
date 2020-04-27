@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import handleData from '../../Services/handleData';
 import firebase from '../../Services/firebase';
+import Notification from '../../Notification/Notification';
 import { Redirect } from "react-router-dom";
 import './DeletePlayer.css'
 
@@ -11,12 +12,23 @@ class DeletePlayer extends Component {
         name: "",
         likes: 0,
         description: "",
-        imageURL: ""
+        imageURL: "",
+        redirect: null
     }
 
     deletePlayer = (e) => {
         e.preventDefault();
         handleData.deletePlayer(this.props.match.params.id)
+            .then(
+                () => {
+                    let successDiv = document.getElementById('success');
+                    successDiv.style.display = "block";
+                    setTimeout(() => {
+                        successDiv.style.display = "none";
+                        this.setState({redirect: "/myplayers"})
+                     }, 2000);
+                }
+            )
             .catch((error) => {
                 console.error('Error:', error);
             });
@@ -40,6 +52,9 @@ class DeletePlayer extends Component {
     }
         render() {
             let dplayer = {...this.state}
+            if (this.state.redirect) {
+                return <Redirect to={this.state.redirect} />
+              }
             return (
                 <div className="deletePlayer">
                     <h3>{dplayer.name}</h3>
@@ -47,6 +62,7 @@ class DeletePlayer extends Component {
                     <p className="img"><img src={dplayer.imageURL} alt="playerImage"/></p>
                     <p className="description">{dplayer.description}</p>
                     <a onClick={this.deletePlayer} href="#" className="details-button">Delete</a>
+                    <Notification message="Succesfully deleted player" />
                 </div>
             )
         }

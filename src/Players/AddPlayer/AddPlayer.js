@@ -5,6 +5,7 @@ import NameImput from './NameInput';
 import DescriptionImput from './DescriptionInput';
 import ImageImput from './ImageInput';
 import TeamSelect from './TeamSelect';
+import Notification from '../../Notification/Notification';
 import './AddPlayer.css'
 
 class AddPlayer extends React.Component {
@@ -59,6 +60,15 @@ class AddPlayer extends React.Component {
                     });
                     player.getId = data.name;
                     handleData.putPlayer(data.name, player)
+                        .then(
+                            () => {
+                                let successDiv = document.getElementById('success');
+                                successDiv.style.display = "block";
+                                setTimeout(() => { 
+                                    successDiv.style.display = "none";
+                                 }, 2000);
+                            }
+                        )
                         .catch((error) => {
                             console.error('Error:', error);
                         });
@@ -86,6 +96,7 @@ class AddPlayer extends React.Component {
                         <ImageImput handleImageChange={this.handleImageChange} imageURL={this.state.imageURL}/>
                         <TeamSelect handleTeamChange={this.handleTeamChange} team={this.state.team}/>
                         <input className="button submit" type="submit" value="Add Player" />
+                        <Notification message="Succesfully added player"/>
                         {this.state.errorMessage ? <p className="error-message">{this.state.errorMessage}</p> : <div></div>}
                         {this.state.loading ? <span><ReactLoading type={"bars"} color={"#000000"} height={45} width={45} /></span> : <span></span>}
                     </fieldset>
