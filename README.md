@@ -2,18 +2,18 @@
 
 You can either download the application and locally install the dependencies or check the demo version of the website at ...
 
-TECH STACK
+<h3>TECH STACK</h3>
 
-HTML5
-CSS3
-JavaScript
-React.js (bootstrapped with Create React App)
-npm
-GitHub
-Firebase
-Visual Studio Code
+<p>HTML5</p>
+<p>CSS3</p>
+<p>JavaScript</p>
+<p>React.js (bootstrapped with Create React App)</p>
+<p>npm</p>
+<p>GotHub</p>
+<p>Firebase</p>
+<p>Visual Studio Code</p>
 
-DESCRIPTION 
+<h3>DESCRIPTION</h3> 
 
 Web application (SPA) with client-side rendering using fetch, Firebase REST API and JSON.
 Register, Login and Logout functionality
