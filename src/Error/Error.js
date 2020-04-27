@@ -17,7 +17,7 @@ class ErrorPage extends Component {
     render() {
         return (
             <div class="error-container">
-                    <img class="error" src={error} alt="error"/>
+                <img class="error" src={error} alt="error"/>
             </div>
         )
     }
