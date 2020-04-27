@@ -40,6 +40,14 @@ class PlayerDetails extends Component {
             .then(player => {
                 player.description = this.state.description;
                 handleData.putPlayer(this.props.match.params.id, player)
+                    .then(() => {
+                        let successDiv = document.getElementById('success');
+                        successDiv.style.display = "block";
+                        setTimeout(() => { 
+                            successDiv.style.display = "none";
+                         }, 2000);
+                    }
+                    )
                     .catch((error) => {
                         console.error('Error:', error);
                     });
@@ -83,9 +91,7 @@ class PlayerDetails extends Component {
                 <p className="img"><img src={player.imageURL} alt="playerImage"/></p>
                 <textarea type="text" value={player.description} onChange={this.getDescription} name="description"></textarea>
                 <a href="#" className="details-button" onClick={this.updatePlayerInfo}>Save</a>
-                {/* <form action="#" method="POST">
-                    
-                </form> */}
+                <div id="success">Succesfully updated player info</div>
             </div>
         )
     } else {

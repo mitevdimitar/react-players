@@ -1,0 +1,13 @@
+.fanshop-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.fanshop {
+    margin-top: 75px;
+    width: 300px;
+    height: 300px;
+    position: relative;
+}

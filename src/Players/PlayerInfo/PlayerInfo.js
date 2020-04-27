@@ -8,7 +8,7 @@ function PlayerInfo(props) {
                     <h3>{player.name}</h3>
                     <p>Team: {player.team}</p>
                     <p className="img"><img src={player.imageURL} alt="playerImage"/></p>
-                    <p className="description">{player.description}</p>
+                    {/* <p className="description">{player.description}</p> */}
                 </Fragment>
 }
 

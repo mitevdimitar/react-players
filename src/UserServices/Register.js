@@ -1,8 +1,8 @@
 import React from 'react';
 import EmailInput from './EmailInput';
 import PasswordInput from './PasswordInput';
-import firebase from '../Services/firebase';
 import { Redirect } from "react-router-dom";
+import handleUser from '../Services/handleUser';
 import './LoginRegister.css'
 
 class Register extends React.Component {
@@ -29,7 +29,7 @@ class Register extends React.Component {
 
     handleUserRegister(e) {
         e.preventDefault();
-        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+        handleUser.register(this.state.email, this.state.password)
             .then(this.setState({ redirect: "/" }))
             .catch(function(error) {
                 var errorMessage = error.message;

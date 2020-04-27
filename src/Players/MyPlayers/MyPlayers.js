@@ -6,20 +6,22 @@ import './MyPlayers.css'
 class MyPlayers extends React.Component {
 
     state = {
-        user: this.props.user.uid,
-        myPlayers: [],
+        myPlayers: []
     }
 
 componentDidMount() {
     handleData.retreivePlayers()
     .then(data => {
         let playersArr = Object.values(data);
-        this.setState({ myPlayers: playersArr });
+        let filteredPlayers = playersArr
+        .filter(player => {
+            return player.creator === this.props.user.uid
+        })
+        this.setState({ myPlayers: filteredPlayers });
     });
 }
 
 componentDidUpdate() {
-    console.log(this.state.myPlayers.length)
     if(this.state.myPlayers.length === 0) {
         let footer = document.getElementById("site-footer");
         footer.style.position = "absolute";
@@ -36,7 +38,7 @@ componentWillUnmount() {
                 <section className="my-players">
                     <h1>My Players</h1>
                     <ul className="my-players-list">
-                        {listPlayers.listMy(this.state.myPlayers, this.state.user)}
+                        {listPlayers.listMy(this.state.myPlayers)}
                     </ul>
                 </section>
         )

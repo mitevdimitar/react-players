@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import handleData from '../../Services/handleData';
 import firebase from '../../Services/firebase';
+import { Redirect } from "react-router-dom";
 import './DeletePlayer.css'
 
 class DeletePlayer extends Component {

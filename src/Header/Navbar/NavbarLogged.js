@@ -1,5 +1,5 @@
 import React from 'react';
-import firebase from '../../Services/firebase';
+import firebase from '../../Services/firebase'
 import {Link, Redirect} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
@@ -16,7 +16,10 @@ class NavbarLogged extends React.Component {
 
     handleUserLogout(e) {
         e.preventDefault();
-        firebase.auth().signOut().then(() => {
+        firebase
+        .auth()
+        .signOut()
+        .then(() => {
             this.setState({ redirect: "/" })
           }).catch(function(error) {
             console.log(error)
@@ -45,6 +48,7 @@ class NavbarLogged extends React.Component {
                             <Link className="button" to="/dashboard">Rankings</Link>
                             <Link className="button" to="/myplayers">My Players</Link>
                             <Link className="button" to="/addplayer">Add Player</Link>
+                            <Link className="button" to="/fanshop">Fanshop</Link>
                         </div>
                         <div className="second-bar">
                             <ul>

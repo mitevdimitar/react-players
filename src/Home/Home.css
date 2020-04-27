@@ -13,8 +13,10 @@ a {
 
 .basic h1 {
     text-align: left;
-    margin: 0rem;
-    padding: 23rem 0 0 2rem;
+    margin-bottom: 0;
+    margin-left: 15px;
+    position: absolute;
+    bottom: 70px;
     font-size: 320%;
     color: #e8e6e6;
 }

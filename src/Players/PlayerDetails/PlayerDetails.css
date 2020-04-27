@@ -23,3 +23,16 @@
 .player-likes {
     margin-right: 10px
 }
+
+#success {
+    color: rgba(255, 255, 255, 0.884);
+    font-weight: bold;
+    width: 230px;
+    height: 30px;
+    background-color:#143615;
+    margin-bottom: 10px;
+    text-align: center;
+    border-radius: 0.4rem;
+    padding: 2px;
+    display: none
+}

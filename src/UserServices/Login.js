@@ -1,7 +1,7 @@
 import React from 'react';
 import EmailInput from './EmailInput';
 import PasswordInput from './PasswordInput';
-import firebase from '../Services/firebase';
+import handleUser from '../Services/handleUser';
 import { Redirect } from "react-router-dom";
 import './LoginRegister.css'
 
@@ -14,7 +14,6 @@ class Login extends React.Component {
             password: '',
             redirect: null
         };
-        //this.handleEmailChange = this.handleEmailChange.bind(this);
     }
 
     handleEmailChange = (e) => {
@@ -27,7 +26,8 @@ class Login extends React.Component {
 
     handleUserLogin = (e) => {
         e.preventDefault();
-        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+        //firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+        handleUser.login(this.state.email, this.state.password)
             .then(this.setState({ redirect: "/" }))
             .catch(function(error) {
                 var errorMessage = error.message;
