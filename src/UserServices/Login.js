@@ -3,7 +3,7 @@ import EmailInput from './EmailInput';
 import PasswordInput from './PasswordInput';
 import handleUser from '../Services/handleUser';
 import { Redirect } from "react-router-dom";
-import './LoginRegister.css'
+import './LoginRegister.css';
 
 class Login extends React.Component {
 
