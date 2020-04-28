@@ -63,4 +63,4 @@ class NavbarLogged extends React.Component {
     
 }
 
-export default NavbarLogged
+export default NavbarLogged;
