@@ -30,7 +30,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({loaded: true})
+        this.setState({loaded: true});
         firebase.auth().onAuthStateChanged((userInfo) => {
             if (userInfo) {
                 this.setState({user: userInfo,
