@@ -3,7 +3,7 @@ import React from 'react';
 import PlayerInfo from '../Players/PlayerInfo/PlayerInfo';
 import PlayerInfoButtons from '../Players/PlayerInfo/PlayerInfoButtons';
 import handleData from './handleData';
-import './listPlayers.css'
+import './listPlayers.css';
 
 /* const firebaseData = firebase.database().ref();
 firebaseData.on('value', (res) => {
