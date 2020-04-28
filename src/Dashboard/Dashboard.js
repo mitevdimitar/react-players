@@ -13,10 +13,12 @@ class Dashboard extends React.Component {
     componentDidMount() {
         handleData.retreivePlayers()
             .then(data => {
-                let playersArr = Object.values(data);
+                let playersArr = Object.values(data)
+                .sort((a, b) => {
+                    return b.likes - a.likes
+                });
                 this.setState({ allPlayers: playersArr });
         });
-        //handleData.retreivePlayers()
     }
 
     render() {
