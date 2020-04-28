@@ -23,4 +23,4 @@ class Fanshop extends Component {
     }
 }
 
-export default Fanshop
+export default Fanshop;
