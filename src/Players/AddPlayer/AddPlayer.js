@@ -6,12 +6,15 @@ import DescriptionImput from './DescriptionInput';
 import ImageImput from './ImageInput';
 import TeamSelect from './TeamSelect';
 import Notification from '../../Notification/Notification';
+import {UserContext} from '../../ContextWrapper';
 import './AddPlayer.css'
 
 class AddPlayer extends React.Component {
 
+    static contextType = UserContext;
+
     state = {
-        creator: this.props.user.uid,
+        creator: this.context.user.uid,
         name: "",
         description: "",
         imageURL: "",

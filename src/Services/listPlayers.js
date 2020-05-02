@@ -39,9 +39,6 @@ const listPlayers = {
         return (
             players.length !== 0 ? 
             players
-/*             .filter(player => {
-                return player.creator === id;
-            }) */
             .map(myPlayer => {
                 return <li key={myPlayer._id} className="myPlayer">
                     <PlayerInfo player={myPlayer}/>

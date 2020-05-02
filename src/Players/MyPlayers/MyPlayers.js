@@ -1,9 +1,12 @@
 import React from 'react';
 import handleData from '../../Services/handleData';
 import listPlayers from '../../Services/listPlayers';
+import {UserContext} from '../../ContextWrapper';
 import './MyPlayers.css'
 
 class MyPlayers extends React.Component {
+
+    static contextType = UserContext;
 
     state = {
         myPlayers: []
@@ -15,7 +18,7 @@ componentDidMount() {
         let playersArr = Object.values(data);
         let filteredPlayers = playersArr
         .filter(player => {
-            return player.creator === this.props.user.uid
+            return player.creator === this.context.user.uid
         })
         this.setState({ myPlayers: filteredPlayers });
     });
