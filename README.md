@@ -9,7 +9,7 @@ You can either download the application and locally install the dependencies or 
 <p>JavaScript</p>
 <p>React.js (bootstrapped with Create React App)</p>
 <p>npm</p>
-<p>GotHub</p>
+<p>GitHub</p>
 <p>Firebase</p>
 <p>Visual Studio Code</p>
 
