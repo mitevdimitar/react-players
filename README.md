@@ -1,6 +1,6 @@
 <h1>MY FAVORITE PREMIER LEAGUE PLAYER</h1>
 
-Download the application and locally install the dependencies to give it a try!
+ 
 
 <h3>TECH STACK</h3>
 
