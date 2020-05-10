@@ -35,6 +35,16 @@ class Login extends React.Component {
             });
     }
 
+    componentDidMount() {
+            let footer = document.getElementById("site-footer");
+            footer.style.position = "absolute";
+    }
+
+    componentWillUnmount() {
+        let footer = document.getElementById("site-footer");
+        footer.style.position = "";
+    }
+
     render() {
         if (this.state.redirect) {
             return <Redirect to={this.state.redirect} />

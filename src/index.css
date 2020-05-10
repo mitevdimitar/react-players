@@ -84,7 +84,8 @@ blockquote {
 
 #root {
 	min-height: 100vh; /* will cover the 100% of viewport */
-	overflow: hidden;
+	/* overflow: hidden; */
 	display: block;
 	position: relative;
+	height: 100%
 }
