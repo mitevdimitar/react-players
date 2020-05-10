@@ -45,6 +45,7 @@ nav.navbar ul li a {
   color: rgba(237, 244, 253, 0.966);
 }
 .button:hover,
+.details-button:hover,
 nav.navbar ul li a:hover,
 nav.navbar ul li:hover > a {
   background: rgb(248, 215, 107);
