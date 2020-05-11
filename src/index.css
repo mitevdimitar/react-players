@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i');
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
 @import url('https://fonts.googleapis.com/css?family=PT+Sans|PT+Serif+Caption:400i|PT+Serif:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css2?family=Bitter&display=swap');
 
 * {
 	box-sizing: border-box;
@@ -51,6 +52,7 @@ body, table, th, td, form, input, textarea, option, select {
 
 h1, h2, h3, h4, h5, h6 {
 	line-height: 1.2;	
+	font-family: 'Bitter', serif;
 }
 
 h1 { font-size: 2.2rem; }
