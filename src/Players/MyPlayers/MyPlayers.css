@@ -1,3 +1,7 @@
+.my-players {
+    padding-bottom: 3.5rem;
+}
+
 .my-players .my-players-list {
     display: flex;
     justify-content: space-around;

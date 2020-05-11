@@ -53,18 +53,16 @@ class Register extends React.Component {
             return <Redirect to={this.state.redirect} />
           }
         return (
-            <div>
                 <section className="register">
                     <form action="#/register" method="post">
+                        <h4>Register</h4>
                         <fieldset>
-                            <legend>Register</legend>
                             <EmailInput email={this.state.email} handleEmailChange={this.handleEmailChange}/>
                             <PasswordInput password={this.state.password} handlePasswordChange={this.handlePasswordChange}/>
                             <input className="button submit" type="submit" value="Register" onClick={this.handleUserRegister}/>
                         </fieldset>
                     </form>
                 </section>
-            </div>
         )
     }
 }

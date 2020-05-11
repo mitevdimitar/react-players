@@ -93,3 +93,11 @@ form label {
 .field .input input:focus+.actions+.fas {
 	color: #090;
 }
+
+.login, .register {
+	padding-bottom: 3.5rem;
+}
+
+.login h4, .register h4 {
+	text-align: center;
+}

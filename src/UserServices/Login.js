@@ -35,32 +35,24 @@ class Login extends React.Component {
             });
     }
 
-    componentDidMount() {
-            let footer = document.getElementById("site-footer");
-            footer.style.position = "absolute";
-    }
-
-    componentWillUnmount() {
-        let footer = document.getElementById("site-footer");
-        footer.style.position = "";
-    }
-
     render() {
         if (this.state.redirect) {
             return <Redirect to={this.state.redirect} />
           }
-        return <div>
-        <section className="login">
-        <form action="#/login" method="post">
-        <fieldset>
-            <legend>Login</legend>
-                <EmailInput email={this.state.email} handleEmailChange={this.handleEmailChange}/>
-                <PasswordInput password={this.state.password} handlePasswordChange={this.handlePasswordChange}/>
-            <input className="button submit" type="submit" value="Login" onClick={this.handleUserLogin}/>
-        </fieldset>
-        </form>
-        </section>
-    </div>
+        return (
+            <React.Fragment>
+                <section className="login">
+                    <form action="#/login" method="post">
+                        <h4>Login</h4>
+                        <fieldset>
+                            <EmailInput email={this.state.email} handleEmailChange={this.handleEmailChange}/>
+                            <PasswordInput password={this.state.password} handlePasswordChange={this.handlePasswordChange}/>
+                            <input className="button submit" type="submit" value="Login" onClick={this.handleUserLogin}/>
+                        </fieldset>
+                    </form>
+                </section>
+            </React.Fragment>
+        )
     }
        
 }
