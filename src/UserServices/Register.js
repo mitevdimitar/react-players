@@ -54,9 +54,9 @@ class Register extends React.Component {
           }
         return (
                 <section className="register">
-                    <form action="#/register" method="post">
-                        <h4>Register</h4>
+                    <form className="register-form" action="#/register" method="post">
                         <fieldset>
+                            <h4>Register</h4>
                             <EmailInput email={this.state.email} handleEmailChange={this.handleEmailChange}/>
                             <PasswordInput password={this.state.password} handlePasswordChange={this.handlePasswordChange}/>
                             <input className="button submit" type="submit" value="Register" onClick={this.handleUserRegister}/>

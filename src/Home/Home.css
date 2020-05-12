@@ -28,3 +28,8 @@ a {
 #site-content {
     padding-bottom: 3.5rem;
 }
+
+.login-form {
+    background-image: url(../img/login-background.jpg);
+    background-size: auto;
+}

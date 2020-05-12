@@ -42,9 +42,9 @@ class Login extends React.Component {
         return (
             <React.Fragment>
                 <section className="login">
-                    <form action="#/login" method="post">
-                        <h4>Login</h4>
+                    <form className="login-form" action="#/login" method="post">
                         <fieldset>
+                            <h4>Login</h4>
                             <EmailInput email={this.state.email} handleEmailChange={this.handleEmailChange}/>
                             <PasswordInput password={this.state.password} handlePasswordChange={this.handlePasswordChange}/>
                             <input className="button submit" type="submit" value="Login" onClick={this.handleUserLogin}/>

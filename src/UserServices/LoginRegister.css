@@ -22,7 +22,7 @@ form fieldset,
 form legend {
 	border: 1px solid #666;
 	background: #F9F9F9;
-	border-radius: 0.3rem;
+	border-radius: 1rem;
 	box-shadow: 0 0 1rem 0.1rem rgba(0, 0, 0, 0.1);
 }
 
@@ -102,4 +102,6 @@ form label {
 
 .login h4, .register h4 {
 	text-align: center;
+	margin-top: 0;
 }
+
