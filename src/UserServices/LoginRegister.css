@@ -96,6 +96,8 @@ form label {
 
 .login, .register {
 	padding-bottom: 3.5rem;
+	display: flex;
+	justify-content: center;
 }
 
 .login h4, .register h4 {
