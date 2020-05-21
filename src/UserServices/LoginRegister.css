@@ -21,7 +21,7 @@ form select {
 form fieldset,
 form legend {
 	border: 1px solid #666;
-	background: #F9F9F9;
+	background: rgba(249, 249, 249, 0.829);
 	border-radius: 1rem;
 	box-shadow: 0 0 1rem 0.1rem rgba(0, 0, 0, 0.1);
 }
@@ -98,6 +98,12 @@ form label {
 	padding-bottom: 3.5rem;
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	background: linear-gradient(rgba(250, 248, 248, 0.2), rgba(25, 167, 173, 0.2)), url(../img/soccer.jpg) no-repeat center;
+	background-size: cover;
+	height: 85vh;
+	position: relative;
+	overflow: hidden;
 }
 
 .login h4, .register h4 {
@@ -105,3 +111,11 @@ form label {
 	margin-top: 0;
 }
 
+.login-form {
+	border: 1px solid #666;
+	background: rgba(249, 249, 249, 0.829);
+	border-radius: 1rem;
+	box-shadow: 0 0 1rem 0.1rem rgba(0, 0, 0, 0.1);
+	padding: 2em 2em 2em 2em;
+	position: absolute;
+}
