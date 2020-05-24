@@ -3,6 +3,7 @@ import EmailInput from './EmailInput';
 import PasswordInput from './PasswordInput';
 import { Redirect } from "react-router-dom";
 import handleUser from '../Services/handleUser';
+import TextField from '@material-ui/core/TextField';
 import './LoginRegister.css';
 
 class Register extends React.Component {
@@ -56,10 +57,24 @@ class Register extends React.Component {
                 <section className="register">
                     <form className="register-form" action="#/register" method="post">
                         <fieldset>
-                            <h4>Register</h4>
-                            <EmailInput email={this.state.email} handleEmailChange={this.handleEmailChange}/>
-                            <PasswordInput password={this.state.password} handlePasswordChange={this.handlePasswordChange}/>
-                            <input className="button submit" type="submit" value="Register" onClick={this.handleUserRegister}/>
+                            <h4>REGISTER</h4>
+                            <TextField 
+                                required id="standard-required" 
+                                label="Email" 
+                                value={this.state.email} 
+                                onChange={this.handleEmailChange} />
+                            <TextField
+                                required
+                                id="standard-password-input"
+                                label="Password"
+                                type="password"
+                                autoComplete="current-password"
+                                value={this.state.password} 
+                                onChange={this.handlePasswordChange}
+                                />
+                            {/* <EmailInput email={this.state.email} handleEmailChange={this.handleEmailChange}/>
+                            <PasswordInput password={this.state.password} handlePasswordChange={this.handlePasswordChange}/> */}
+                            <input className="button submit" type="submit" value="REGISTER" onClick={this.handleUserRegister}/>
                         </fieldset>
                     </form>
                 </section>
