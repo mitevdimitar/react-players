@@ -109,6 +109,7 @@ form label {
 .login h4, .register h4 {
 	text-align: center;
 	margin-top: 0;
+	margin-bottom: 5%
 }
 
 .login-form {
@@ -118,4 +119,11 @@ form label {
 	box-shadow: 0 0 1rem 0.1rem rgba(0, 0, 0, 0.1);
 	padding: 2em 2em 2em 2em;
 	position: absolute;
+	display: flex;
+	flex-direction: column;
+}
+
+.register-form fieldset {
+	display: flex;
+	flex-direction: column;
 }
