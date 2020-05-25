@@ -10,6 +10,10 @@ h3 {
     padding: 0rem;
 }
 
+.img {
+    transition: transform .4s;
+}
+
 img {
     display: block;
     left: 0;
@@ -18,10 +22,14 @@ img {
     height: auto;
     max-height: 300px;
     object-fit: cover;
-    border-radius: 15%;
+    border-radius: 15%
 }
 
 .img::after {
     display: block;
     content: "";
+}
+
+.img:hover {
+    transform: scale(1.05); 
 }
