@@ -93,7 +93,7 @@ class AddPlayer extends React.Component {
                 <section className="create">
                 <form onSubmit={this.handleSubmit} action="#/add" method="post">
                     <fieldset>
-                        <legend>Add PL Player</legend>
+                        <h4>Add PL Player</h4>
                         <NameImput handleNameChange={this.handleNameChange} name={this.state.name}/>
                         <DescriptionImput handleDescriptionChange={this.handleDescriptionChange} description={this.state.description}/>
                         <ImageImput handleImageChange={this.handleImageChange} imageURL={this.state.imageURL}/>
