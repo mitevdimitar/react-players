@@ -13,3 +13,12 @@
     margin-top: 0;
     text-align: center;
 }
+
+.create .MuiFormControl-root {
+    width: 100%
+}
+
+.create .MuiFilledInput-root {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+

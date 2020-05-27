@@ -44,10 +44,12 @@ class Login extends React.Component {
                         <form className="login-form" action="#/login" method="post">
                             <h4>LOGIN</h4>
                             <TextField 
-                                required id="standard-required" 
+                                required 
+                                id="standard-required" 
                                 label="Email" 
                                 value={this.state.email} 
-                                onChange={this.handleEmailChange} />
+                                onChange={this.handleEmailChange} 
+                            />
                             <TextField
                                 required
                                 id="standard-password-input"
@@ -56,7 +58,7 @@ class Login extends React.Component {
                                 autoComplete="current-password"
                                 value={this.state.password} 
                                 onChange={this.handlePasswordChange}
-                                />
+                            />
                             <input className="button submit" type="submit" value="LOGIN" onClick={this.handleUserLogin}/>
                         </form>               
                 </section>

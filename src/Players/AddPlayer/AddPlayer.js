@@ -7,6 +7,10 @@ import ImageImput from './ImageInput';
 import TeamSelect from './TeamSelect';
 import Notification from '../../Notification/Notification';
 import {UserContext} from '../../ContextWrapper';
+import TextField from '@material-ui/core/TextField';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 import './AddPlayer.css'
 
 class AddPlayer extends React.Component {
@@ -45,6 +49,7 @@ class AddPlayer extends React.Component {
    
     handleSubmit = (e) => {
         e.preventDefault();
+        console.log(this.state)
         if (this.state.name === "" || this.state.description === "" || 
         this.state.imageURL === "" || this.state.team === "") {
             this.setState({errorMessage: "All fields are required!"})
@@ -94,10 +99,54 @@ class AddPlayer extends React.Component {
                 <form onSubmit={this.handleSubmit} action="#/add" method="post">
                     <fieldset>
                         <h4>Add PL Player</h4>
-                        <NameImput handleNameChange={this.handleNameChange} name={this.state.name}/>
-                        <DescriptionImput handleDescriptionChange={this.handleDescriptionChange} description={this.state.description}/>
-                        <ImageImput handleImageChange={this.handleImageChange} imageURL={this.state.imageURL}/>
-                        <TeamSelect handleTeamChange={this.handleTeamChange} team={this.state.team}/>
+                        <TextField 
+                            required 
+                            id="name"
+                            label="Name" 
+                            value={this.state.name} 
+                            onChange={this.handleNameChange} 
+                        />
+                        <TextField
+                            required
+                            id="standard-multiline-static"
+                            label="Description"
+                            multiline
+                            rows={5}
+                            value={this.state.description} 
+                            onChange={this.handleDescriptionChange} 
+                            /* variant="outlined" */
+                        />
+                        {/* <DescriptionImput handleDescriptionChange={this.handleDescriptionChange} description={this.state.description}/> */}
+                        <TextField 
+                            required 
+                            id="image"
+                            label="Image URL" 
+                            value={this.state.imageURL} 
+                            onChange={this.handleImageChange} 
+                        />
+                        {/* <ImageImput handleImageChange={this.handleImageChange} imageURL={this.state.imageURL}/> */}
+                        <FormControl>
+                            <InputLabel htmlFor="team-native-simple">Team</InputLabel>
+                            <Select
+                                native
+                                required
+                                value={this.state.team}
+                                onChange={this.handleTeamChange}
+                                inputProps={{
+                                    name: 'team',
+                                    id: 'team-native-simple',
+                                }}
+                                >
+                                <option aria-label="None" value="" />
+                                <option>Man Utd</option>
+                                <option>Liverpool</option>
+                                <option>Man City</option>
+                                <option>Chelsea</option>
+                                <option>Arsenal</option>
+                                <option>Other</option>
+                            </Select>
+                        </FormControl>
+                        {/* <TeamSelect handleTeamChange={this.handleTeamChange} team={this.state.team}/> */}
                         <input className="button submit" type="submit" value="Add Player" />
                         <Notification message="Succesfully added player"/>
                         {this.state.errorMessage ? <p className="error-message">{this.state.errorMessage}</p> : <div></div>}
