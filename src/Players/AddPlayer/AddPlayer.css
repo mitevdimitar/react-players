@@ -15,7 +15,12 @@
 }
 
 .create .MuiFormControl-root {
-    width: 100%
+    width: 100%;
+    margin-bottom: 4%;
+}
+
+.create form {
+    margin: 5.7% auto;
 }
 
 .create .MuiFilledInput-root {
