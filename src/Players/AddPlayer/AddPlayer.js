@@ -1,10 +1,6 @@
 import React from 'react';
 import handleData from '../../Services/handleData';
 import ReactLoading from 'react-loading';
-import NameImput from './NameInput';
-import DescriptionImput from './DescriptionInput';
-import ImageImput from './ImageInput';
-import TeamSelect from './TeamSelect';
 import Notification from '../../Notification/Notification';
 import {UserContext} from '../../ContextWrapper';
 import TextField from '@material-ui/core/TextField';
@@ -116,7 +112,6 @@ class AddPlayer extends React.Component {
                             onChange={this.handleDescriptionChange} 
                             /* variant="outlined" */
                         />
-                        {/* <DescriptionImput handleDescriptionChange={this.handleDescriptionChange} description={this.state.description}/> */}
                         <TextField 
                             required 
                             id="image"
@@ -124,7 +119,6 @@ class AddPlayer extends React.Component {
                             value={this.state.imageURL} 
                             onChange={this.handleImageChange} 
                         />
-                        {/* <ImageImput handleImageChange={this.handleImageChange} imageURL={this.state.imageURL}/> */}
                         <FormControl>
                             <InputLabel htmlFor="team-native-simple">Team</InputLabel>
                             <Select
@@ -146,7 +140,6 @@ class AddPlayer extends React.Component {
                                 <option>Other</option>
                             </Select>
                         </FormControl>
-                        {/* <TeamSelect handleTeamChange={this.handleTeamChange} team={this.state.team}/> */}
                         <input className="button submit" type="submit" value="Add Player" />
                         <Notification message="Succesfully added player"/>
                         {this.state.errorMessage ? <p className="error-message">{this.state.errorMessage}</p> : <div></div>}
