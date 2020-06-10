@@ -1,22 +1,20 @@
 import React, {Component} from 'react';
+import Product from './Product';
 import ball from '../img/ball.png';
 import './Shop.css'
 
 class Shop extends Component {
+
+    state = {
+        products: []
+    }
 
     render() {
         return (
             <div className="shop-container">
                 <h1>Shop</h1>
                 <div className="products-container">
-                    <div className="product">
-                        <h3>
-                            Product 1
-                        </h3>
-                        <div>
-                            <img src={ball} alt="ball" />
-                        </div>
-                    </div>
+                    <Product name="Premier league ball" img={ball} />
                     <div className="product">
                         Product 2
                     </div>
