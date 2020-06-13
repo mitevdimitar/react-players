@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProductConsumer } from './ProductContext';
+import { ProductConsumer } from '../ContextWrapper';
 
 const Product = ({name, img}) => {
     return (
@@ -7,7 +7,7 @@ const Product = ({name, img}) => {
             <div className="product">
                 <ProductConsumer>
                     {(value) => {
-                        return <h1>{value}</h1>
+                        console.log(value.products)
                     }}
                 </ProductConsumer>
                 <h3>{name}</h3>

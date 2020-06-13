@@ -6,13 +6,8 @@ import './Shop.css'
 
 class Shop extends Component {
 
-    state = {
-        products: []
-    }
-
     render() {
         return (
-            <ProductProvider>
                 <div className="shop-container">
                     <h1>Shop</h1>
                     <div className="products-container">
@@ -25,7 +20,6 @@ class Shop extends Component {
                         </div>
                     </div>
                 </div>
-            </ProductProvider>
         )
     }
 }
