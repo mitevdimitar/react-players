@@ -1,25 +1,25 @@
 import React, {Component} from 'react';
 import Product from './Product';
 import ball from '../img/ball.png';
-import { ProductProvider } from './ProductContext';
 import './Shop.css'
+import { ProductConsumer } from '../ContextWrapper';
 
 class Shop extends Component {
 
     render() {
         return (
-                <div className="shop-container">
-                    <h1>Shop</h1>
-                    <div className="products-container">
-                        <Product name="Premier league ball" img={ball} />
-                        <div className="product">
-                            Product 2
-                        </div>
-                        <div className="product">
-                            Product 3
-                        </div>
-                    </div>
+            <div className="shop-container">
+                <h1>Shop</h1>
+                <div className="products-container">
+                    <ProductConsumer>
+                        {(value) => {
+                            return value.products.map(product => {
+                                return <Product key={product.id} name={product.title} img={product.img} />
+                            })
+                        }}
+                    </ProductConsumer>
                 </div>
+            </div>
         )
     }
 }

@@ -7,7 +7,7 @@ export const storeProducts = [
   {
     id: 1,
     title: "Premier League Ball",
-    img: "../img/ball.png",
+    img: "ball",
     price: 10,
     company: "PL",
     info:
@@ -19,7 +19,7 @@ export const storeProducts = [
   {
     id: 2,
     title: "Soccer Bag",
-    img: "../img/bag.png",
+    img: "bag",
     price: 16,
     company: "SAMSUNG",
     info:
@@ -31,7 +31,7 @@ export const storeProducts = [
   {
     id: 3,
     title: "Man Utd Jersey",
-    img: "../img/jersey.png",
+    img: "jersey",
     price: 8,
     company: "htc",
     info:
