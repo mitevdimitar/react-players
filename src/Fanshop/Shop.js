@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Product from './Product';
-import ball from '../img/ball.png';
 import './Shop.css'
 import { ProductConsumer } from '../ContextWrapper';
 
