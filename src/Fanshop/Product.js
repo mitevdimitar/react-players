@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const ProductDiv = styled.div`
     border: 1px solid grey;
@@ -23,5 +24,10 @@ const Product = ({name, img}) => {
             </ProductDiv>
     );
 };
+
+Product.propTypes = {
+    name: PropTypes.string,
+    img: PropTypes.string
+}
 
 export default Product;
