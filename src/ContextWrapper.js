@@ -14,7 +14,7 @@ class ContextWrapper extends React.Component {
     state={
         user: null,
         isLogged: false,
-        products: storeProducts
+        products: []
     }
 
     componentDidMount() {
@@ -26,7 +26,12 @@ class ContextWrapper extends React.Component {
                 this.setState({user: null,
                 isLogged: false})
             }
-          });
+        });
+        let productsArr = [];
+        storeProducts.forEach(product => {
+            productsArr.push(product);
+        })
+        this.setState({products: productsArr});
     }
 
     render() {
