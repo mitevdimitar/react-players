@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ProductDiv = styled.div`
     border: 1px solid grey;
@@ -17,9 +19,17 @@ const ProductImg = styled.img`
 const Product = ({name, img}) => {
     return (
             <ProductDiv className="product">
-                <h3>{name}</h3>
                 <div>
                     <ProductImg src={require(`../img/${img}.png`)} alt={img} />
+                </div>
+                <h4>{name}</h4>
+                <div className="order-product">
+                    <span>
+                        10 USD
+                    </span>
+                    <button>
+                        <FontAwesomeIcon icon={faShoppingCart} />
+                    </button>
                 </div>
             </ProductDiv>
     );
