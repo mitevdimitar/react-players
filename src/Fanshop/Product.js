@@ -5,8 +5,7 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ProductDiv = styled.div`
-    border: 1px solid grey;
-    background-color: bisque;
+    background-color: rgb(252, 251, 253);
     text-align: center;
 `
 
@@ -19,10 +18,10 @@ const ProductImg = styled.img`
 const Product = ({name, img}) => {
     return (
             <ProductDiv className="product">
-                <div>
+                <div className="product-image">
                     <ProductImg src={require(`../img/${img}.png`)} alt={img} />
                 </div>
-                <h4>{name}</h4>
+                <h5>{name}</h5>
                 <div className="order-product">
                     <span>
                         10 USD
