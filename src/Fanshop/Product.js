@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -18,10 +19,12 @@ const ProductImg = styled.img`
 const Product = ({name, img}) => {
     return (
             <ProductDiv className="product">
-                <div className="product-image">
-                    <ProductImg src={require(`../img/${img}.png`)} alt={img} />
-                </div>
-                <h5>{name}</h5>
+                <Link to="/product-details">
+                    <div className="product-image">
+                        <ProductImg src={require(`../img/${img}.png`)} alt={img} />
+                    </div>
+                    <h5>{name}</h5>
+                </Link>
                 <div className="order-product">
                     <span>
                         10 USD

@@ -17,6 +17,7 @@ import DeletePlayer from './Players/DeletePlayer/DeletePlayer';
 import ErrorPage from './Error/Error';
 import Fanshop from './Fanshop/Fanshop';
 import Shop from './Fanshop/Shop';
+import ProductDetails from './Fanshop/ProductDetails';
 import firebase from './Services/firebase';
 import {UserContext} from './ContextWrapper';
 
@@ -57,6 +58,7 @@ class Navigation extends React.Component {
                         <Route path="/dashboard/:team?" component={Dashboard} />
                         <Route path="/fanshop" component={Fanshop} />
                         <Route path="/shop" component={Shop} />
+                        <Route path="/product-details" component={ProductDetails} />
                         <Route exact path="/player-details/:id" component={PlayerDetails}/>
                         <Route path="/delete/:id" component={DeletePlayer}/>
                         {this.context.isLogged && <Route path="/myplayers" component={MyPlayers}/>}
