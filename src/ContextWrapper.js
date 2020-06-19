@@ -1,6 +1,6 @@
 import React from 'react';
 import firebase from './Services/firebase';
-import {storeProducts} from './Fanshop/productsInfo';
+import {storeProducts, detailProduct} from './Fanshop/productsInfo';
 
 export const UserContext = React.createContext({
     user: null,
@@ -14,7 +14,8 @@ class ContextWrapper extends React.Component {
     state={
         user: null,
         isLogged: false,
-        products: []
+        products: [],
+        productDetails: detailProduct
     }
 
     componentDidMount() {
