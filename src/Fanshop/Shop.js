@@ -13,7 +13,7 @@ class Shop extends Component {
                     <ProductConsumer>
                         {(value) => {
                             return value.products.map(product => {
-                                return <Product key={product.id} name={product.title} img={product.img} />
+                                return <Product key={product.id} id={product.id} name={product.title} img={product.img} handleDetails={value.handleDetails}/>
                             })
                         }}
                     </ProductConsumer>

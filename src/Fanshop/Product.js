@@ -16,10 +16,10 @@ const ProductImg = styled.img`
     margin: 10px auto;
 `
 
-const Product = ({name, img}) => {
+const Product = ({id, name, img, handleDetails}) => {
     return (
             <ProductDiv className="product">
-                <Link to="/product-details">
+                <Link to="/product-details" onClick={() => handleDetails(id)}>
                     <div className="product-image">
                         <ProductImg src={require(`../img/${img}.png`)} alt={img} />
                     </div>

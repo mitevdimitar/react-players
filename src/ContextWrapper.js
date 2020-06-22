@@ -35,9 +35,20 @@ class ContextWrapper extends React.Component {
         this.setState({products: productsArr});
     }
 
+    selectProduct = (id) => {
+        return this.state.products.filter(product => {
+            return product.id === id;
+        });
+    }
+
+    handleDetails = (id) => {
+        const currentProduct = this.selectProduct(id)[0];
+        this.setState({productDetails: currentProduct});
+    }
+
     render() {
         return (
-            <UserContext.Provider value={ this.state }>
+            <UserContext.Provider value={{...this.state, handleDetails: this.handleDetails}}>
                 {this.props.children}
             </UserContext.Provider>
         )
