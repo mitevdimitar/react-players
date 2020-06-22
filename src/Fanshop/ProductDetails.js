@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ProductConsumer } from '../ContextWrapper';
 
 const ProductDetails = () => {
@@ -19,6 +20,8 @@ const ProductDetails = () => {
                                     <p>
                                         {info}
                                     </p>
+                                    <Link to="/shop" className="details-button">Continue shopping</Link>
+                                    <Link to="/cart" className="details-button">Add to cart</Link>
                                 </div>
                             </div>
                         )

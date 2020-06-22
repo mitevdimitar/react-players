@@ -68,7 +68,12 @@
 }
 
 .product-text {
-    width: 50%
+    width: 50%;
+    text-align: center;
+}
+
+.product-text h5 {
+    margin-bottom: 1%
 }
 
 @media screen and (max-width: 800px) {

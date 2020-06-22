@@ -134,3 +134,11 @@ form label {
 .login .button, .register .button {
 	margin-top: 10%
 }
+
+
+@media only screen and (max-width: 800px) {
+	.login form,
+	.register form {
+		margin: 0;
+	}
+}
