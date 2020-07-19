@@ -1,8 +1,7 @@
 import React from 'react';
 import './Home.css';
 
-function Home() {
-    
+function Home(props) {
     return (
         <div id="site-content">
             <section className="basic">
