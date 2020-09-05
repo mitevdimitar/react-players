@@ -24,6 +24,7 @@
     background: #234465;
     color: rgba(237, 244, 253, 0.966);
     font-size: 1rem;
+    cursor: pointer;
 }
 
 .player-info {

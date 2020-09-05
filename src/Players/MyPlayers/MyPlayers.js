@@ -1,7 +1,7 @@
 import React from 'react';
 import handleData from '../../Services/handleData';
 import listPlayers from '../../Services/listPlayers';
-import {UserContext} from '../../ContextWrapper';
+import { UserContext } from '../../ContextWrapper';
 import './MyPlayers.css'
 
 class MyPlayers extends React.Component {

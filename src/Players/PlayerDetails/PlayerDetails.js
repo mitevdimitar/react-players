@@ -61,7 +61,7 @@ class PlayerDetails extends Component {
                 handleData.retreivePlayers(this.props.match.params.id)
                 .then(data => {
                     this.setState({
-                        isMyPlayer: userInfo.uid === data.creator,
+                        isMyPlayer: data && data.creator ? userInfo.uid === data.creator : false,
                         name: data.name,
                         likes: data.likes,
                         description: data.description,
