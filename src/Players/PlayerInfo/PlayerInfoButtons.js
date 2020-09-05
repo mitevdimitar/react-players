@@ -62,7 +62,7 @@ function PlayerInfoButtons({player, isMyPlayer, history}) {
                             </DialogContentText>
                             </DialogContent>
                             <DialogActions>
-                            <Button onClick={() => handleClose} color="primary">
+                            <Button onClick={() => handleClose()} color="primary">
                                 Leave
                             </Button>
                             <Button onClick={() => history.push('/login')} color="primary" autoFocus>
