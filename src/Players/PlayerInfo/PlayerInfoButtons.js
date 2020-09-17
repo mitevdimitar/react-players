@@ -10,6 +10,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import ButtonComponent from "../../Components/Button";
 
 
 function PlayerInfoButtons({player, isMyPlayer, history}) {
@@ -44,9 +45,9 @@ function PlayerInfoButtons({player, isMyPlayer, history}) {
             } else {
                 return (
                     <div className="player-info">
-                        <a className="details-button" onClick={handleDetailsButton}>
+                        <ButtonComponent className="details-button" handle={handleDetailsButton}>
                             Details
-                        </a>
+                        </ButtonComponent>
                         <FontAwesomeIcon icon={faHeart} /> <span>{player.likes}</span>
                         <Dialog
                             open={open}
