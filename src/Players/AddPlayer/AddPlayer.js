@@ -1,5 +1,5 @@
 /*eslint-disable no-undef*/
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import handleData from '../../Services/handleData';
 import ReactLoading from 'react-loading';
 import Notification from '../../Notification/Notification';
@@ -10,66 +10,67 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from "../../Components/Button";
 import './AddPlayer.css';
-const myWidget = cloudinary.createUploadWidget({
-    cloudName: 'detm4x3jn', 
-    uploadPreset: 'players'}, (error, result) => { 
-      if (!error && result && result.event === "success") { 
-        console.log('Done! Here is the image info: ', result.info); 
-      }
-    }
-)
   
-class AddPlayer extends React.Component {
+function AddPlayer() {
+    const auth = useContext(UserContext);
+    const creator = auth.user.uid;
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
+    const [imageURL, setImageURL] = useState("");
+    const [team, setTeam] = useState("");
+    const [_id, setId] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+    const myWidget = cloudinary.createUploadWidget({
+        cloudName: 'detm4x3jn', 
+        uploadPreset: 'players'}, (error, result) => { 
+          if (!error && result && result.event === "success") { 
+            setImageURL(result.info.secure_url);
+          }
+        }
+    )
 
-    static contextType = UserContext;
-
-    state = {
-        creator: this.context.user.uid,
-        name: "",
-        description: "",
-        imageURL: "",
-        team: "",
-        _id: "",
-        getId: "",
-        likes: 0,
-        loading: false,
-        errorMessage: ""
+    const handleNameChange = (e) => {
+        setName(e.target.value);
     }
 
-    handleNameChange = (e) => {
-        this.setState({name: e.target.value})
+    const handleDescriptionChange = (e) => {
+        setDescription(e.target.value);
     }
 
-    handleDescriptionChange = (e) => {
-        this.setState({description: e.target.value})
+    const handleImageChange = (e) => {
+        setImageURL(e.target.value);
     }
 
-    handleImageChange = (e) => {
-        this.setState({imageURL: e.target.value})
-    }
-
-    handleTeamChange = (e) => {
-        this.setState({team: e.target.value})
+    const handleTeamChange = (e) => {
+        setTeam(e.target.value);
     }
     
    
-    handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        if (this.state.imageURL === "") {
-            this.setState({errorMessage: "Player image is required!"})
+        if (imageURL === "") {
+           setErrorMessage("Player image is required!");
         } else {
-            let player = this.state;
-            this.setState({errorMessage: ""})
-            this.setState({loading:true})
+            let player = {
+                creator,
+                name,
+                description,
+                imageURL,
+                team,
+                _id,
+                getId: "",
+                likes: 0
+            };
+            setErrorMessage("Player image is required!");
+            setLoading(true);
             handleData.postPlayer(player)
                 .then((data) => {
-                    this.setState({
-                        loading: false,
-                        name: "",                                
-                        description: "",
-                        imageURL: "",
-                        team: ""
-                    });
+                    setLoading(false);
+                    setName("");
+                    setDescription("");
+                    setImageURL("");
+                    setTeam("");
                     player.getId = data.name;
                     handleData.putPlayer(data.name, player)
                         .then(
@@ -91,74 +92,72 @@ class AddPlayer extends React.Component {
             }
     }
 
-    componentDidMount() {
+    useEffect(()=>{
         let generatedId = Math.floor(Math.random() * 100000000000000);
-        this.setState({_id: generatedId});
-    }
+        setId(generatedId);
+    }, []);
 
-    render() {
-        return (
-            <React.Fragment>
-                <section className="create">
-                <form onSubmit={this.handleSubmit} action="#/add" method="post">
-                    <fieldset>
-                        <h4>Add PL Player</h4>
-                        <TextField 
-                            required 
-                            id="name"
-                            label="Name" 
-                            value={this.state.name} 
-                            onChange={this.handleNameChange} 
-                        />
-                        <TextField
+    return (
+        <React.Fragment>
+            <section className="create">
+            <form onSubmit={handleSubmit} action="#/add" method="post">
+                <fieldset>
+                    <h4>Add PL Player</h4>
+                    <TextField 
+                        required 
+                        id="name"
+                        label="Name" 
+                        value={name} 
+                        onChange={handleNameChange} 
+                    />
+                    <TextField
+                        required
+                        id="standard-multiline-static"
+                        label="Description"
+                        multiline
+                        rows={5}
+                        value={description} 
+                        onChange={handleDescriptionChange} 
+                        /* variant="outlined" */
+                    />
+                    {/* <TextField 
+                        required 
+                        id="image"
+                        label="Image URL" 
+                        value={imageURL} 
+                        onChange={handleImageChange} 
+                    /> */}
+                    <FormControl>
+                        <InputLabel htmlFor="team-native-simple">Team</InputLabel>
+                        <Select
+                            native
                             required
-                            id="standard-multiline-static"
-                            label="Description"
-                            multiline
-                            rows={5}
-                            value={this.state.description} 
-                            onChange={this.handleDescriptionChange} 
-                            /* variant="outlined" */
-                        />
-                        {/* <TextField 
-                            required 
-                            id="image"
-                            label="Image URL" 
-                            value={this.state.imageURL} 
-                            onChange={this.handleImageChange} 
-                        /> */}
-                        <FormControl>
-                            <InputLabel htmlFor="team-native-simple">Team</InputLabel>
-                            <Select
-                                native
-                                required
-                                value={this.state.team}
-                                onChange={this.handleTeamChange}
-                                inputProps={{
-                                    name: 'team',
-                                    id: 'team-native-simple',
-                                }}
-                                >
-                                <option aria-label="None" value="" />
-                                <option>Man Utd</option>
-                                <option>Liverpool</option>
-                                <option>Man City</option>
-                                <option>Chelsea</option>
-                                <option>Arsenal</option>
-                                <option>Other</option>
-                            </Select>
-                        </FormControl>
-                        <Button handle={() => myWidget.open()} id="upload_widget" /* className="cloudinary-button" */>Upload image</Button>
-                        <input className="button submit" type="submit" value="Add Player" />
-                        <Notification message="Succesfully added player"/>
-                        {this.state.errorMessage ? <p className="error-message">{this.state.errorMessage}</p> : <div></div>}
-                        {this.state.loading ? <span><ReactLoading type={"bars"} color={"#000000"} height={45} width={45} /></span> : <span></span>}
-                    </fieldset>
-                </form>
-            </section>
-            </React.Fragment>
-        )
-    }
+                            value={team}
+                            onChange={handleTeamChange}
+                            inputProps={{
+                                name: 'team',
+                                id: 'team-native-simple',
+                            }}
+                            >
+                            <option aria-label="None" value="" />
+                            <option>Man Utd</option>
+                            <option>Liverpool</option>
+                            <option>Man City</option>
+                            <option>Chelsea</option>
+                            <option>Arsenal</option>
+                            <option>Other</option>
+                        </Select>
+                    </FormControl>
+                    <Button handle={() => myWidget.open()} id="upload_widget" /* className="cloudinary-button" */>Upload image</Button>
+                    <input className="button submit" type="submit" value="Add Player" />
+                    <Notification message="Succesfully added player"/>
+                    {errorMessage ? <p className="error-message">{errorMessage}</p> : <div></div>}
+                    {loading ? <span><ReactLoading type={"bars"} color={"#000000"} height={45} width={45} /></span> : <span></span>}
+                </fieldset>
+            </form>
+        </section>
+        </React.Fragment>
+    )
 }
 
 export default AddPlayer
