@@ -1,3 +1,4 @@
+/*eslint-disable no-undef*/
 import React from 'react';
 import handleData from '../../Services/handleData';
 import ReactLoading from 'react-loading';
@@ -7,8 +8,17 @@ import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import './AddPlayer.css'
-
+import Button from "../../Components/Button";
+import './AddPlayer.css';
+const myWidget = cloudinary.createUploadWidget({
+    cloudName: 'detm4x3jn', 
+    uploadPreset: 'players'}, (error, result) => { 
+      if (!error && result && result.event === "success") { 
+        console.log('Done! Here is the image info: ', result.info); 
+      }
+    }
+)
+  
 class AddPlayer extends React.Component {
 
     static contextType = UserContext;
@@ -45,10 +55,8 @@ class AddPlayer extends React.Component {
    
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
-        if (this.state.name === "" || this.state.description === "" || 
-        this.state.imageURL === "" || this.state.team === "") {
-            this.setState({errorMessage: "All fields are required!"})
+        if (this.state.imageURL === "") {
+            this.setState({errorMessage: "Player image is required!"})
         } else {
             let player = this.state;
             this.setState({errorMessage: ""})
@@ -112,13 +120,13 @@ class AddPlayer extends React.Component {
                             onChange={this.handleDescriptionChange} 
                             /* variant="outlined" */
                         />
-                        <TextField 
+                        {/* <TextField 
                             required 
                             id="image"
                             label="Image URL" 
                             value={this.state.imageURL} 
                             onChange={this.handleImageChange} 
-                        />
+                        /> */}
                         <FormControl>
                             <InputLabel htmlFor="team-native-simple">Team</InputLabel>
                             <Select
@@ -140,6 +148,7 @@ class AddPlayer extends React.Component {
                                 <option>Other</option>
                             </Select>
                         </FormControl>
+                        <Button handle={() => myWidget.open()} id="upload_widget" /* className="cloudinary-button" */>Upload image</Button>
                         <input className="button submit" type="submit" value="Add Player" />
                         <Notification message="Succesfully added player"/>
                         {this.state.errorMessage ? <p className="error-message">{this.state.errorMessage}</p> : <div></div>}
