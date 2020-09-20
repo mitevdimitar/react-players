@@ -22,8 +22,8 @@ function AddPlayer() {
     const [loading, setLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const myWidget = cloudinary.createUploadWidget({
-        cloudName: 'detm4x3jn', 
-        uploadPreset: 'players'}, (error, result) => { 
+        cloudName: REACT_APP_CLOUD_NAME, 
+        uploadPreset: REACT_APP_UPLOAD_PRESET}, (error, result) => { 
           if (!error && result && result.event === "success") { 
             setImageURL(result.info.secure_url);
           }
@@ -38,9 +38,9 @@ function AddPlayer() {
         setDescription(e.target.value);
     }
 
-    const handleImageChange = (e) => {
+    /* const handleImageChange = (e) => {
         setImageURL(e.target.value);
-    }
+    } */
 
     const handleTeamChange = (e) => {
         setTeam(e.target.value);
@@ -62,7 +62,7 @@ function AddPlayer() {
                 getId: "",
                 likes: 0
             };
-            setErrorMessage("Player image is required!");
+            setErrorMessage("");
             setLoading(true);
             handleData.postPlayer(player)
                 .then((data) => {
