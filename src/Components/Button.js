@@ -5,12 +5,13 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     root: {
         marginRight: "10px",
-        padding: "0.6rem 0.7re",
+        padding: "0.6rem 0.7rem",
         marginBottom: "0.7rem",
         borderRadius: "0.4rem",
         fontWeight: "bold",
         background: "#234465",
         color: "rgba(237, 244, 253, 0.966)",
+        textTransform: "none",
         "&:hover": {
             background: "rgb(248, 215, 107)",
             color: "rgb(0, 0, 0)"

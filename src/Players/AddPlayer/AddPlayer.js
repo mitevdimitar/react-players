@@ -9,6 +9,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from "../../Components/Button";
+import Grid from '@material-ui/core/Grid';
 import './AddPlayer.css';
   
 function AddPlayer() {
@@ -21,11 +22,14 @@ function AddPlayer() {
     const [_id, setId] = useState("");
     const [loading, setLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+
+    console.log(process.env);
     const myWidget = cloudinary.createUploadWidget({
-        cloudName: REACT_APP_CLOUD_NAME, 
-        uploadPreset: REACT_APP_UPLOAD_PRESET}, (error, result) => { 
+        cloudName: process.env.REACT_APP_CLOUD_NAME,
+        uploadPreset: "players"}, (error, result) => { 
           if (!error && result && result.event === "success") { 
             setImageURL(result.info.secure_url);
+            console.log(process.env.REACT_APP_CLOUD_NAME)
           }
         }
     )
@@ -47,8 +51,7 @@ function AddPlayer() {
     }
     
    
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = () => {
         if (imageURL === "") {
            setErrorMessage("Player image is required!");
         } else {
@@ -148,8 +151,11 @@ function AddPlayer() {
                             <option>Other</option>
                         </Select>
                     </FormControl>
-                    <Button handle={() => myWidget.open()} id="upload_widget" /* className="cloudinary-button" */>Upload image</Button>
-                    <input className="button submit" type="submit" value="Add Player" />
+                    <Grid container direction="row">
+                        <Button handle={() => myWidget.open()} id="upload_widget" /* className="cloudinary-button" */>Upload image</Button>
+                        <Button handle={handleSubmit}>Add player</Button>
+                        {/* <input className="button submit" type="submit" value="Add Player" /> */}
+                    </Grid>
                     <Notification message="Succesfully added player"/>
                     {errorMessage ? <p className="error-message">{errorMessage}</p> : <div></div>}
                     {loading ? <span><ReactLoading type={"bars"} color={"#000000"} height={45} width={45} /></span> : <span></span>}
