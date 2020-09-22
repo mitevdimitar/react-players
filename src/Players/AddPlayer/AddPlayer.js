@@ -19,11 +19,9 @@ function AddPlayer() {
     const [description, setDescription] = useState("");
     const [imageURL, setImageURL] = useState("");
     const [team, setTeam] = useState("");
-    const [_id, setId] = useState("");
     const [loading, setLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
 
-    console.log(process.env);
     const myWidget = cloudinary.createUploadWidget({
         cloudName: process.env.REACT_APP_CLOUD_NAME,
         uploadPreset: "players"}, (error, result) => { 
@@ -50,7 +48,6 @@ function AddPlayer() {
         setTeam(e.target.value);
     }
     
-   
     const handleSubmit = () => {
         if (imageURL === "") {
            setErrorMessage("Player image is required!");
@@ -61,7 +58,7 @@ function AddPlayer() {
                 description,
                 imageURL,
                 team,
-                _id,
+                _id: Math.floor(Math.random() * 100000000000000),
                 getId: "",
                 likes: 0
             };
@@ -95,15 +92,10 @@ function AddPlayer() {
             }
     }
 
-    useEffect(()=>{
-        let generatedId = Math.floor(Math.random() * 100000000000000);
-        setId(generatedId);
-    }, []);
-
     return (
         <React.Fragment>
             <section className="create">
-            <form onSubmit={handleSubmit} action="#/add" method="post">
+            <form action="#/add" method="post">
                 <fieldset>
                     <h4>Add PL Player</h4>
                     <TextField 
