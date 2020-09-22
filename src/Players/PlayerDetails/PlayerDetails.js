@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import handleData from '../../Services/handleData';
 import firebase from '../../Services/firebase';
 import Notification from '../../Notification/Notification';
+import Button from '../../Components/Button';
 import './PlayerDetails.css'
 
 class PlayerDetails extends Component {
@@ -15,8 +16,7 @@ class PlayerDetails extends Component {
             liked: false
     }
 
-    increaseLikes = (e) => {
-        e.preventDefault();
+    increaseLikes = () => {
         handleData.retreivePlayers(this.props.match.params.id)
             .then(player => {
                 player.likes = player.likes + 1;
@@ -35,8 +35,7 @@ class PlayerDetails extends Component {
         this.setState({description: e.target.value});
     }
 
-    updatePlayerInfo = (e) => {
-        e.preventDefault();
+    updatePlayerInfo = () => {
         handleData.retreivePlayers(this.props.match.params.id)
             .then(player => {
                 player.description = this.state.description;
@@ -73,16 +72,9 @@ class PlayerDetails extends Component {
     }
 
     render() {
-        let button;
-        if (this.state.liked) {
-            button = <a className="details-button">Liked</a>
-        } else {
-            button = <a href="#" onClick = {this.increaseLikes} className="details-button">Like 
-            <i className="fas fa-heart"></i>
-            </a>
-        }
 
-        let player = this.state;
+        const player = this.state;
+        const { liked } = this.state;
 
     if (player.isMyPlayer) {
         return (
@@ -91,7 +83,7 @@ class PlayerDetails extends Component {
                 <p><span className="player-likes">Player likes: {player.likes}</span></p>
                 <p className="img"><img src={player.imageURL} alt="playerImage"/></p>
                 <textarea type="text" value={player.description} onChange={this.getDescription} name="description"></textarea>
-                <a href="#" className="details-button" onClick={this.updatePlayerInfo}>Save</a>
+                <Button handle={this.updatePlayerInfo}>Save</Button>
                 <Notification message="Succesfully updated player info" />
             </div>
         )
@@ -100,7 +92,13 @@ class PlayerDetails extends Component {
             <section className="detailsOtherPlayer">
                 <h3>{player.name}</h3>
                 <p><span className="player-likes">Player likes: {this.state.likes} </span>
-                        {button}
+                    {liked 
+                        ? 
+                    <Button>Liked</Button> 
+                        : 
+                    <Button handle = {this.increaseLikes}>
+                        Like <i className="fas fa-heart"></i>
+                    </Button>}
                 </p>
                 <p className="img"><img src={player.imageURL} alt="playerImage" /></p>
                 <p className="description">{player.description}</p>

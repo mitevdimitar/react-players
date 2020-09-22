@@ -1,5 +1,5 @@
 /*eslint-disable no-undef*/
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import handleData from '../../Services/handleData';
 import ReactLoading from 'react-loading';
 import Notification from '../../Notification/Notification';
