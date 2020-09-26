@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Product from './Product';
 import ProductCard from './ProductCard';
 import './Shop.css'
 import { ProductConsumer } from '../ContextWrapper';

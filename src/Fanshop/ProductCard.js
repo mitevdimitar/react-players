@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { withRouter } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,14 +18,15 @@ const useStyles = makeStyles((theme) => ({
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
-    backgroundSize: "contain"
+    backgroundSize: "contain",
+    cursor: "pointer"
   },
   avatar: {
     backgroundColor: red[500],
   },
 }));
 
-export default function ProductCard( {img, name, info, company, handleDetails, id} ) {
+function ProductCard( {img, name, info, company, handleDetails, id, history} ) {
   const classes = useStyles();
 
   return (
@@ -45,7 +47,10 @@ export default function ProductCard( {img, name, info, company, handleDetails, i
         className={classes.media}
         image={require(`../img/${img}.png`)}
         title={name}
-        onClick={()=>handleDetails(id)}
+        onClick={()=>{
+            handleDetails(id);
+            history.push("/product-details");
+        }}
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
@@ -55,3 +60,6 @@ export default function ProductCard( {img, name, info, company, handleDetails, i
     </Card>
   );
 }
+
+
+export default withRouter(ProductCard);
