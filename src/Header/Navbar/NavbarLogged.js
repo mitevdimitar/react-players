@@ -48,7 +48,7 @@ class NavbarLogged extends React.Component {
                             <Link className="button" to="/dashboard">Rankings</Link>
                             <Link className="button" to="/myplayers">My Players</Link>
                             <Link className="button" to="/addplayer">Add Player</Link>
-                            <Link className="button" to="/fanshop">Fanshop</Link>
+                            <Link className="button" to="/shop">Fanshop</Link>
                         </div>
                         <div className="second-bar">
                             <ul>
