@@ -21,7 +21,7 @@ const ProductDetails = () => {
                                         {info}
                                     </p>
                                     <Link to="/shop" className="details-button">Continue shopping</Link>
-                                    <Link to="/cart" className="details-button">Add to cart</Link>
+                                    <Link to="/fanshop" className="details-button">Add to cart</Link>
                                 </div>
                             </div>
                         )

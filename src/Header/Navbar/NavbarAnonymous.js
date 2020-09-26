@@ -7,6 +7,7 @@ function NavbarAnonymous() {
                  <div className="nav-first-line">
                         <div className="first-bar">
                             <Link className="button" to="/dashboard">Rankings</Link>
+                            <Link className="button" to="/shop">Fanshop</Link>
                         </div>
                         <div className="second-bar">
                         <ul>
