@@ -3,6 +3,9 @@ import firebase from '../../Services/firebase';
 import { Link, Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import IconButton from '@material-ui/core/IconButton';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import Button from '../../Components/Button';
 
 class NavbarLogged extends React.Component {
   constructor(props) {
@@ -45,6 +48,9 @@ class NavbarLogged extends React.Component {
       <section className="navbar-dashboard">
         <div className="nav-first-line">
           <div className="first-bar">
+            {/* <Button>
+              <FontAwesomeIcon icon={faBars} />
+            </Button> */}
             <a href="#" onClick={this.toggleMenu} className="white">
               <FontAwesomeIcon icon={faBars} />
             </a>
@@ -64,6 +70,9 @@ class NavbarLogged extends React.Component {
           <div className="second-bar">
             <ul>
               <li>Welcome!</li>
+              <IconButton>
+                <ShoppingCartIcon style={{ color: 'white' }} />
+              </IconButton>
               <li>
                 <Link
                   className="nav-button"
