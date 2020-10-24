@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import firebase from '../../Services/firebase';
 import { Link, Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,30 +6,45 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Button from '../../Components/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import Popper from '@material-ui/core/Popper';
 
-class NavbarLogged extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      redirect: null,
-    };
-    this.handleUserLogout = this.handleUserLogout.bind(this);
-  }
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    border: '2px solid grey',
+    minHeight: "200px",
+    minWidth: "300px",
+    padding: theme.spacing(1),
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
 
-  handleUserLogout(e) {
+function NavbarLogged(props) {
+  const classes = useStyles();
+  const [redirect, setRedirect] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popper' : undefined;
+
+  const handleUserLogout = (e) => {
     e.preventDefault();
     firebase
       .auth()
       .signOut()
       .then(() => {
-        this.setState({ redirect: '/' });
+        setRedirect('/');
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
       });
   }
 
-  toggleMenu(e) {
+  const toggleMenu = (e) => {
     e.preventDefault();
     let element = document.querySelectorAll('.navbar .first-bar .button');
     let elementsArr = Array.apply(null, element);
@@ -40,18 +55,15 @@ class NavbarLogged extends React.Component {
     });
   }
 
-  render() {
-    if (this.state.redirect) {
-      return <Redirect to={this.state.redirect} />;
-    }
-    return (
-      <section className="navbar-dashboard">
+  return (
+    redirect ? <Redirect to={redirect} /> : 
+    <section className="navbar-dashboard">
         <div className="nav-first-line">
           <div className="first-bar">
             {/* <Button>
               <FontAwesomeIcon icon={faBars} />
             </Button> */}
-            <a href="#" onClick={this.toggleMenu} className="white">
+            <a href="#" onClick={() => toggleMenu()} className="white">
               <FontAwesomeIcon icon={faBars} />
             </a>
             <Link className="button" to="/dashboard">
@@ -69,15 +81,18 @@ class NavbarLogged extends React.Component {
           </div>
           <div className="second-bar">
             <ul>
-              <li>Welcome!</li>
-              <IconButton>
-                <ShoppingCartIcon style={{ color: 'white' }} />
+              <IconButton aria-describedby={id} onClick={(event) => handleClick(event)}>
+                <ShoppingCartIcon  style={{ color: 'white' }}/>
               </IconButton>
+              <Popper id={id} open={open} anchorEl={anchorEl}>
+               <div  className={classes.paper}  >Your cart is empty.</div>
+              </Popper>
+              <li>Welcome!</li>
               <li>
                 <Link
                   className="nav-button"
                   to="/logout"
-                  onClick={this.handleUserLogout}
+                  onClick={() => handleUserLogout()}
                 >
                   <i className="fas fa-sign-out-alt"></i> Logout
                 </Link>
@@ -86,8 +101,7 @@ class NavbarLogged extends React.Component {
           </div>
         </div>
       </section>
-    );
-  }
+  )
 }
 
 export default NavbarLogged;
