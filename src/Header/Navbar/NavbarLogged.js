@@ -63,7 +63,7 @@ function NavbarLogged(props) {
             {/* <Button>
               <FontAwesomeIcon icon={faBars} />
             </Button> */}
-            <a href="#" onClick={() => toggleMenu()} className="white">
+            <a href="#" onClick={toggleMenu} className="white">
               <FontAwesomeIcon icon={faBars} />
             </a>
             <Link className="button" to="/dashboard">
@@ -92,7 +92,7 @@ function NavbarLogged(props) {
                 <Link
                   className="nav-button"
                   to="/logout"
-                  onClick={() => handleUserLogout()}
+                  onClick={handleUserLogout}
                 >
                   <i className="fas fa-sign-out-alt"></i> Logout
                 </Link>
