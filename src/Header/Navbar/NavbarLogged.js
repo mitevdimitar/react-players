@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import Button from '../../Components/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
 
@@ -60,12 +59,9 @@ function NavbarLogged(props) {
     <section className="navbar-dashboard">
         <div className="nav-first-line">
           <div className="first-bar">
-            {/* <Button>
+            <div onClick={toggleMenu} className="white">
               <FontAwesomeIcon icon={faBars} />
-            </Button> */}
-            <a href="#" onClick={toggleMenu} className="white">
-              <FontAwesomeIcon icon={faBars} />
-            </a>
+            </div>
             <Link className="button" to="/dashboard">
               Rankings
             </Link>
@@ -81,13 +77,13 @@ function NavbarLogged(props) {
           </div>
           <div className="second-bar">
             <ul>
+              <li>Welcome!</li>
               <IconButton aria-describedby={id} onClick={(event) => handleClick(event)}>
                 <ShoppingCartIcon  style={{ color: 'white' }}/>
               </IconButton>
               <Popper id={id} open={open} anchorEl={anchorEl}>
                <div  className={classes.paper}  >Your cart is empty.</div>
               </Popper>
-              <li>Welcome!</li>
               <li>
                 <Link
                   className="nav-button"
