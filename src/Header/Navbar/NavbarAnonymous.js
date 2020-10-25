@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { makeStyles } from '@material-ui/core/styles';
+import Popper from '@material-ui/core/Popper';
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    border: '2px solid grey',
+    minHeight: "200px",
+    minWidth: "300px",
+    padding: theme.spacing(1),
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
 
 function NavbarAnonymous() {
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popper' : undefined;
+
   return (
     <section className="navbar-anonymous">
       <div className="nav-first-line">
@@ -18,9 +40,12 @@ function NavbarAnonymous() {
         <div className="second-bar">
           <ul>
             <li>
-              <IconButton>
+              <IconButton aria-describedby={id} onClick={(event) => handleClick(event)}>
                 <ShoppingCartIcon style={{ color: 'white' }} />
               </IconButton>
+              <Popper id={id} open={open} anchorEl={anchorEl} placement="bottom-start">
+               <div  className={classes.paper}  >Your cart is empty.</div>
+              </Popper>
             </li>
             <li>
               <a className="nav-button" href="/register">
