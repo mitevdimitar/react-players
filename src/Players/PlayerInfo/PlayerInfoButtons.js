@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { UserContext } from '../../ContextWrapper';
 import { withRouter } from "react-router";
-import Button from '@material-ui/core/Button';
+import Button from '../../Components/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -63,10 +63,10 @@ function PlayerInfoButtons({player, isMyPlayer, history}) {
                             </DialogContentText>
                             </DialogContent>
                             <DialogActions>
-                            <Button onClick={() => handleClose()} color="primary">
+                            <Button handle={() => handleClose()} color="primary">
                                 Leave
                             </Button>
-                            <Button onClick={() => history.push('/login')} color="primary" autoFocus>
+                            <Button handle={() => history.push('/login')} color="primary" autoFocus>
                                 Login
                             </Button>
                             </DialogActions>

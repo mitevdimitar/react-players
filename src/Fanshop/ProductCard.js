@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -10,6 +10,11 @@ import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { withRouter } from "react-router";
+//import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Button from "../Components/Button";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,6 +33,15 @@ const useStyles = makeStyles((theme) => ({
 
 function ProductCard( {img, name, info, company, handleDetails, id, history} ) {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+      setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+};
 
   return (
     <Card className={classes.root}>
@@ -36,13 +50,29 @@ function ProductCard( {img, name, info, company, handleDetails, id, history} ) {
           <Avatar aria-label="logo" className={classes.avatar} src={require(`../img/premier-league-logo.png`)} />
         }
         action={
-          <IconButton aria-label="shop">
+          <IconButton aria-label="shop" onClick={() => handleOpen()}>
             <ShoppingCartIcon />
           </IconButton>
         }
         title={name}
         subheader={company}
       />
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-product-added"
+        aria-describedby="alert-procduct-added-to-cart"
+    >
+        <DialogTitle id="alert-product-added">{"Product added to cart!"}</DialogTitle>
+        <DialogActions>
+        <Button handle={() => handleClose()} color="primary">
+            Continue shopping
+        </Button>
+        <Button handle={() => history.push('./fanshop')} color="primary" autoFocus>
+            Go to cart
+        </Button>
+        </DialogActions>
+    </Dialog>
       <CardMedia
         className={classes.media}
         image={require(`../img/${img}.png`)}
