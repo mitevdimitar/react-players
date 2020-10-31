@@ -61,7 +61,7 @@ class DeletePlayer extends Component {
                     <p>Player likes: <i className="fas fa-heart"></i>{dplayer.likes}</p>
                     <p className="img"><img src={dplayer.imageURL} alt="playerImage"/></p>
                     <p className="description">{dplayer.description}</p>
-                    <a onClick={this.deletePlayer} href="#" className="details-button">Permanently delete player?</a>
+                    <div onClick={this.deletePlayer} className="details-button">Permanently delete player?</div>
                     <Notification message="Succesfully deleted player" />
                 </div>
             )

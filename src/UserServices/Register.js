@@ -1,6 +1,4 @@
 import React from 'react';
-import EmailInput from './EmailInput';
-import PasswordInput from './PasswordInput';
 import { Redirect } from "react-router-dom";
 import handleUser from '../Services/handleUser';
 import TextField from '@material-ui/core/TextField';

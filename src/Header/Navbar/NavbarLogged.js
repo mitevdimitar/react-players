@@ -48,7 +48,7 @@ function NavbarLogged(props) {
     let element = document.querySelectorAll('.navbar .first-bar .button');
     let elementsArr = Array.apply(null, element);
     elementsArr.map((a) => {
-      a.style.display === 'flex'
+     return a.style.display === 'flex'
         ? (a.style.display = 'none')
         : (a.style.display = 'flex');
     });
