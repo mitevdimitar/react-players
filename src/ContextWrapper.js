@@ -15,7 +15,8 @@ class ContextWrapper extends React.Component {
         user: null,
         isLogged: false,
         products: [],
-        productDetails: detailProduct
+        productDetails: detailProduct,
+        productsInCart: []
     }
 
     componentDidMount() {
@@ -46,9 +47,16 @@ class ContextWrapper extends React.Component {
         this.setState({productDetails: currentProduct});
     }
 
+    addToCart = (id)  => {
+        const selectedProduct = this.selectProduct(id)[0];
+        let currentProductsInCart = [...this.state.productsInCart];
+        currentProductsInCart.push(selectedProduct)
+        this.setState({productsInCart: currentProductsInCart});
+    }
+
     render() {
         return (
-            <UserContext.Provider value={{...this.state, handleDetails: this.handleDetails}}>
+            <UserContext.Provider value={{...this.state, handleDetails: this.handleDetails, addToCart: this.addToCart}}>
                 {this.props.children}
             </UserContext.Provider>
         )

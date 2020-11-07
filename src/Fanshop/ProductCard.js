@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ProductCard( {img, name, info, company, handleDetails, id, history} ) {
+function ProductCard( {img, name, info, company, handleDetails, addToCart, id, history, productsInCart} ) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -39,9 +39,14 @@ function ProductCard( {img, name, info, company, handleDetails, id, history} ) {
       setOpen(false);
   };
 
-  const handleOpen = () => {
+  const handleOpen = (id) => {
+    addToCart(id);
     setOpen(true);
 };
+
+useEffect(()=> {
+  console.log(productsInCart)
+});
 
   return (
     <Card className={classes.root}>
@@ -50,7 +55,7 @@ function ProductCard( {img, name, info, company, handleDetails, id, history} ) {
           <Avatar aria-label="logo" className={classes.avatar} src={require(`../img/premier-league-logo.png`)} />
         }
         action={
-          <IconButton aria-label="shop" onClick={() => handleOpen()}>
+          <IconButton aria-label="shop" onClick={() => handleOpen(id)}>
             <ShoppingCartIcon />
           </IconButton>
         }
