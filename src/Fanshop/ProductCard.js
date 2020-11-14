@@ -73,7 +73,7 @@ useEffect(()=> {
         <Button handle={() => handleClose()} color="primary">
             Continue shopping
         </Button>
-        <Button handle={() => history.push('./fanshop')} color="primary" autoFocus>
+        <Button handle={() => history.push('./cart')} color="primary" autoFocus>
             Go to cart
         </Button>
         </DialogActions>
