@@ -16,7 +16,7 @@ function ShopCart() {
 
     return(
         <Grid container justify="center" alignItems="center" direction="column" className={classes.root}>
-            {products.map(product=>  <CartRow product={product} />)}
+            {products.map(product=>  <CartRow key={product.id} product={product} />)}
         </Grid>
     )
 }
