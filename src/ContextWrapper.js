@@ -16,7 +16,6 @@ class ContextWrapper extends React.Component {
         isLogged: false,
         products: [],
         productDetails: detailProduct,
-        productsInCart: []
     }
 
     componentDidMount() {
@@ -49,9 +48,13 @@ class ContextWrapper extends React.Component {
 
     addToCart = (id)  => {
         const selectedProduct = this.selectProduct(id)[0];
-        let currentProductsInCart = [...this.state.productsInCart];
-        currentProductsInCart.push(selectedProduct)
-        this.setState({productsInCart: currentProductsInCart});
+        selectedProduct.inCart = true;
+        selectedProduct.count += 1;
+
+        let remainingProducts = [...this.state.products].filter(product=>product.id !== id);
+
+        remainingProducts.push(selectedProduct)
+        this.setState({products: remainingProducts});
     }
 
     render() {

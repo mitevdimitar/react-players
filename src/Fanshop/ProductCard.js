@@ -37,30 +37,26 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function ProductCard( {img, name, info, company, handleDetails, addToCart, id, history, productsInCart} ) {
+function ProductCard( {img, name, info, company, handleDetails, addToCart, id, history, products} ) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
-  /* const handleClose = () => {
-      setOpen(false);
-  }; */
+  const handleOpen = (id) => {
+    addToCart(id);
+    setOpen(true);
+  };
 
-const handleOpen = (id) => {
-  addToCart(id);
-  setOpen(true);
-};
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
 
-const handleClose = (event, reason) => {
-  if (reason === 'clickaway') {
-    return;
-  }
+    setOpen(false);
+  };
 
-  setOpen(false);
-};
-
-useEffect(()=> {
-  console.log(productsInCart)
-});
+  useEffect(()=> {
+    console.log(products)
+  });
 
   return (
     <Card className={classes.root}>
@@ -76,7 +72,7 @@ useEffect(()=> {
         title={name}
         subheader={company}
       />
-      <Snackbar open={open} className={classes.snackBar} /* autoHideDuration={3000}  */onClose={handleClose}>
+      <Snackbar open={open} className={classes.snackBar} autoHideDuration={3000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success">
           Product added to cart!
         </Alert>

@@ -15,7 +15,7 @@ class Shop extends Component {
                             return value.products.map(product => {
                                 return <ProductCard key={product.id} company={product.company} info={product.info} id={product.id} 
                                 name={product.title} img={product.img} handleDetails={value.handleDetails}
-                                addToCart={value.addToCart} productsInCart={value.productsInCart}/>
+                                addToCart={value.addToCart} products={value.products}/>
                             })
                         }}
                     </ProductConsumer>
