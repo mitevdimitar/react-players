@@ -7,7 +7,7 @@ class Fanshop extends Component {
     render() {
         return (
             <div class="fanshop-container">
-                    <img class="fanshop" src={underConstruction} alt="fanshop under construction"/>
+                <img class="fanshop" src={underConstruction} alt="fanshop under construction"/>
             </div>
         )
     }

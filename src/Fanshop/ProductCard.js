@@ -11,10 +11,12 @@ import { red } from '@material-ui/core/colors';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { withRouter } from "react-router";
 //import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Button from "../Components/Button";
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,19 +31,31 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: red[500],
   },
+  snackBar: {
+    top: "90px",
+    bottom: "auto"
+  }
 }));
 
 function ProductCard( {img, name, info, company, handleDetails, addToCart, id, history, productsInCart} ) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
-  const handleClose = () => {
+  /* const handleClose = () => {
       setOpen(false);
-  };
+  }; */
 
-  const handleOpen = (id) => {
-    addToCart(id);
-    setOpen(true);
+const handleOpen = (id) => {
+  addToCart(id);
+  setOpen(true);
+};
+
+const handleClose = (event, reason) => {
+  if (reason === 'clickaway') {
+    return;
+  }
+
+  setOpen(false);
 };
 
 useEffect(()=> {
@@ -62,22 +76,11 @@ useEffect(()=> {
         title={name}
         subheader={company}
       />
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-product-added"
-        aria-describedby="alert-procduct-added-to-cart"
-    >
-        <DialogTitle id="alert-product-added">{"Product added to cart!"}</DialogTitle>
-        <DialogActions>
-        <Button handle={() => handleClose()} color="primary">
-            Continue shopping
-        </Button>
-        <Button handle={() => history.push('./fanshop')} color="primary" autoFocus>
-            Go to cart
-        </Button>
-        </DialogActions>
-    </Dialog>
+      <Snackbar open={open} className={classes.snackBar} /* autoHideDuration={3000}  */onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          Product added to cart!
+        </Alert>
+      </Snackbar>
       <CardMedia
         className={classes.media}
         image={require(`../img/${img}.png`)}
