@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     row: {
       height: "50px",
-      width: "60%",
+      width: "90%",
       background: "lightgoldenrodyellow",
       marginBottom: "1px",
     },
