@@ -32,7 +32,7 @@ function CartRow({product, quantityChange}) {
     const productQuantity = product.count;
     
     const onQuantityChange = (e) => {
-        quantityChange(product.id, e.target.value)
+        quantityChange(product, e.target.value)
     }
 
     return(

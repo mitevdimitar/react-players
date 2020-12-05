@@ -47,23 +47,25 @@ class ContextWrapper extends React.Component {
     }
 
     addToCart = (id)  => {
+        const {products} = this.state;
         const selectedProduct = this.selectProduct(id)[0];
+        const index = products.indexOf(selectedProduct)
         selectedProduct.inCart = true;
         selectedProduct.count += 1;
 
-        let remainingProducts = [...this.state.products].filter(product=>product.id !== id);
-
-        remainingProducts.push(selectedProduct)
-        this.setState({products: remainingProducts});
+        let currentProducts = [...products]
+        currentProducts.splice(index, 1, selectedProduct);
+        this.setState({products: currentProducts});
     }
 
-    quantityChange = (id, quantity) => {
-        const selectedProduct = this.selectProduct(id)[0];
-        selectedProduct.count = quantity;
-        let remainingProducts = [...this.state.products].filter(product=>product.id !== id);
-
-        remainingProducts.push(selectedProduct)
-        this.setState({products: remainingProducts});
+    quantityChange = (product, quantity) => {
+        const {products} = this.state;
+        const index = products.indexOf(product)
+        product.count = +quantity;
+        
+        let currentProducts = [...products]
+        currentProducts.splice(index, 1, product);
+        this.setState({products: currentProducts});
     }
 
     render() {
