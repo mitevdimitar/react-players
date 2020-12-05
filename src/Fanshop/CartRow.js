@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
@@ -27,13 +27,14 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function CartRow({product}) {
+function CartRow({product, quantityChange}) {
     const classes = useStyles();
-    const [productQuantity, setProductQuantity] = useState(product.count)
+    const productQuantity = product.count;
     
-    const quantityChange = (e) => {
-        setProductQuantity(e.target.value)
+    const onQuantityChange = (e) => {
+        quantityChange(product.id, e.target.value)
     }
+
     return(
         <Grid container justify="center" alignItems="center" className={classes.row}>
             <Grid container justify="center" item xs={2}>
@@ -47,7 +48,7 @@ function CartRow({product}) {
                 className={classes.number}
                 id="standard-number"
                 value={productQuantity}
-                onChange={quantityChange}
+                onChange={onQuantityChange}
                 type="number"
             />
             </Grid>

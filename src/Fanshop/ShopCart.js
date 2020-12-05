@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import CartRow from "./CartRow";
 import TotalRow from "./TotalRow";
 import { makeStyles } from '@material-ui/core/styles';
-import {UserContext} from "../ContextWrapper";
+import { ProductConsumer } from '../ContextWrapper';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,15 +18,21 @@ const useStyles = makeStyles((theme) => ({
 
 function ShopCart() {
     const classes = useStyles();
-    const {products} = useContext(UserContext);
 
     return(
-        <Grid container justify="center" alignItems="center" className={classes.root}>
-          <Grid container item justify="center" alignItems="center" direction="column" className={classes.cart}>
-            {products.map(product=>  <CartRow key={product.id} product={product} />)}
-            <TotalRow/>
-          </Grid>
-        </Grid>
+      <ProductConsumer>
+        {(value) => {
+          const {products, quantityChange} = value;
+          return (
+            <Grid container justify="center" alignItems="center" className={classes.root}>
+              <Grid container item justify="center" alignItems="center" direction="column" className={classes.cart}>
+                {products.map(product=>  <CartRow key={product.id} product={product} quantityChange={quantityChange} />)}
+                <TotalRow/>
+              </Grid>
+            </Grid>
+          )
+        }}
+      </ProductConsumer>
     )
 }
 
