@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 function CartRow({product, quantityChange}) {
+    console.log(product)
     const classes = useStyles();
     const productQuantity = product.count;
     

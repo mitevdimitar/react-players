@@ -54,9 +54,9 @@ function ProductCard( {img, name, info, company, handleDetails, addToCart, id, h
     setOpen(false);
   };
 
-  useEffect(()=> {
+  /* useEffect(()=> {
     console.log(products)
-  });
+  }); */
 
   return (
     <Card className={classes.root}>

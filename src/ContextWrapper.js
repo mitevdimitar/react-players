@@ -1,13 +1,16 @@
 import React from 'react';
 import firebase from './Services/firebase';
 import {storeProducts, detailProduct} from './Fanshop/productsInfo';
+import {setConfig} from 'react-hot-loader';
 
 export const UserContext = React.createContext({
     user: null,
-    isLogged: false
+    isLogged: false,
+    products: []
 });
 
 export const ProductConsumer = UserContext.Consumer;
+setConfig({disableHotRenderer: true});
 
 class ContextWrapper extends React.Component {
 
@@ -17,6 +20,7 @@ class ContextWrapper extends React.Component {
         products: [],
         productDetails: detailProduct,
     }
+
 
     componentDidMount() {
         firebase.auth().onAuthStateChanged((userInfo) => {
@@ -32,6 +36,7 @@ class ContextWrapper extends React.Component {
         storeProducts.forEach(product => {
             productsArr.push(product);
         })
+        console.log(this.state.products)
         this.setState({products: productsArr});
     }
 
@@ -55,6 +60,7 @@ class ContextWrapper extends React.Component {
 
         let currentProducts = [...products]
         currentProducts.splice(index, 1, selectedProduct);
+        console.log(currentProducts)
         this.setState({products: currentProducts});
     }
 
