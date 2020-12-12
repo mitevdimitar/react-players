@@ -28,7 +28,7 @@ function ShopCart() {
             <Grid container justify="center" alignItems="center" className={classes.root}>
               <Grid container item justify="center" alignItems="center" direction="column" className={classes.cart}>
                 {products.map(product=>  <CartRow key={product.id} product={product} quantityChange={quantityChange} />)}
-                <TotalRow/>
+                <TotalRow products={products}/>
               </Grid>
             </Grid>
           )

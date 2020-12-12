@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import { makeStyles } from '@material-ui/core/styles';
@@ -17,14 +17,22 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-function TotalRow({product}) {
+function TotalRow({products}) {
     const classes = useStyles();
+    const [totalAmount, setTotalAmount] = useState(0)
+    useEffect(()=>{
+        let amount = 0;
+        for (let product of products) {
+            amount += product.count * product.price
+        }
+        setTotalAmount(amount)
+    }, [products])
 
     return(
         <Grid container justify="center" alignItems="center" className={classes.row}>
             <Grid item xs={2}></Grid>
             <Grid className={classes.total} item xs={6}>Total</Grid>
-            <Grid container alignItems="center" item xs={1} className={classes.price}>{15} <AttachMoneyIcon style={{fontSize:"15px"}} /></Grid>
+            <Grid container alignItems="center" item xs={1} className={classes.price}>{totalAmount} <AttachMoneyIcon style={{fontSize:"15px"}} /></Grid>
             <Grid item xs={3}></Grid>
         </Grid>
     )
