@@ -1,6 +1,6 @@
 <h1>MY FAVORITE PREMIER LEAGUE PLAYER</h1>
 
-You can give it try either by visiting https://favoriteplayer.netlify.app/
+You can give it a try by visiting https://favoriteplayer.netlify.app/
 
 <h3>TECH STACK</h3>
 
