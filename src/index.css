@@ -39,8 +39,8 @@ html {
 body {
     padding: 0;
     margin: 0;
-	background-color: #eff4f4;
-	background-image: url("img/texture-pattern-light-background-gradient-light-texture_1920x1200_sc.jpg");
+	background-color: #d4eaff;
+	/* background-image: url("img/texture-pattern-light-background-gradient-light-texture_1920x1200_sc.jpg"); */
 	background-size: cover;
 	height: 100%;
 	position: relative;
