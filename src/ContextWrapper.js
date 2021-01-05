@@ -36,7 +36,6 @@ class ContextWrapper extends React.Component {
         storeProducts.forEach(product => {
             productsArr.push(product);
         })
-        console.log(this.state.products)
         this.setState({products: productsArr});
     }
 

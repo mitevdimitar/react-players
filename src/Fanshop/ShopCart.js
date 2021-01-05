@@ -22,7 +22,6 @@ function ShopCart() {
     return(
       <ProductConsumer>
         {(value) => {
-          console.log(value)
           const {products, quantityChange} = value;
           return (
             <Grid container justify="center" alignItems="center" className={classes.root}>

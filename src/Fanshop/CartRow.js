@@ -28,12 +28,15 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 function CartRow({product, quantityChange}) {
-    console.log(product)
     const classes = useStyles();
     const productQuantity = product.count;
     
-    const onQuantityChange = (e) => {
-        quantityChange(product, e.target.value)
+    const onQuantityChange = (e, operation) => {
+        if (e) {
+            quantityChange(product, e.target.value)
+        } else if (operation === 'delete') {
+            quantityChange(product, 0)
+        }
     }
 
     return(
@@ -54,7 +57,7 @@ function CartRow({product, quantityChange}) {
             />
             </Grid>
             <Grid container alignItems="center" item xs={1} className={classes.deleteIcon}>
-                <HighlightOffIcon />
+                <HighlightOffIcon color="secondary" onClick={() => onQuantityChange(null, "delete")}/>
             </Grid>
         </Grid>
     )
