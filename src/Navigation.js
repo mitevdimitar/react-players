@@ -21,6 +21,7 @@ import ProductDetails from './Fanshop/ProductDetails';
 import ShopCart from "./Fanshop/ShopCart";
 import firebase from './Services/firebase';
 import {UserContext} from './ContextWrapper';
+import Checkout from "./Fanshop/Checkout";
 
 class Navigation extends React.Component {
 
@@ -63,6 +64,7 @@ class Navigation extends React.Component {
                         <Route path="/product-details" component={ProductDetails} />
                         <Route exact path="/player-details/:id" component={PlayerDetails}/>
                         <Route path="/delete/:id" component={DeletePlayer}/>
+                        <Route path="/checkout" component={Checkout} />
                         {this.context.isLogged && <Route path="/myplayers" component={MyPlayers}/>}
                         {this.context.isLogged && <Route exact path="/addplayer" component={AddPlayer}/>}
                         {this.state.loaded && <Route path="*" component={ErrorPage}/>}

@@ -4,8 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      height: "50%",
-      width: "50%",
+      height: "80vh",
+      width: "100%",
       background: "lightgoldenrodyellow",
     },
   }));
@@ -15,7 +15,7 @@ function Checkout() {
 
     return(
         <Grid container justify="center" alignItems="center" className={classes.root}>
-            Checkout page
+            Congratulations! Your virtual purchase was successful! Thank you for trying My Favorite PL Player! 
         </Grid>
     )
 }

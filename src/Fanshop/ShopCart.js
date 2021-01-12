@@ -37,7 +37,7 @@ function ShopCart() {
                 <TotalRow products={products}/>
                 <Grid container item justify="flex-end" className={classes.buttonContainer}>
                   <Link to="/shop" className="details-button">Continue shopping</Link>
-                  <Link to="/" className="details-button">Checkout</Link>
+                  <Link to="/checkout" className="details-button">Checkout</Link>
                 </Grid>
               </Grid>
             </Grid>
