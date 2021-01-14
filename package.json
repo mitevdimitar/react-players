@@ -14,6 +14,7 @@
     "@testing-library/user-event": "^7.2.1",
     "dotenv": "^8.2.0",
     "firebase": "^7.12.0",
+    "fireworks": "^2.2.6",
     "npm": "^6.14.5",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
