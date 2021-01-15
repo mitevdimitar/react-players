@@ -2,6 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { Fireworks } from 'fireworks/lib/react'
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -9,6 +10,11 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
       background: "lightgoldenrodyellow",
     },
+    text: {
+      fontFamily: "'Bitter', serif !important",
+      paddingLeft: 40,
+      paddingRight: 40
+    }
   }));
 
 function Checkout() {
@@ -28,7 +34,9 @@ function Checkout() {
     return(
         <Grid container justify="center" alignItems="center" className={classes.root}>
             <Fireworks {...fxProps} />
-            <div>Congratulations! Your virtual purchase was successful! Thank you for trying My Favorite PL Player! </div>
+            <Typography align="center" className={classes.text} variant="h3">
+              Congratulations! Your virtual purchase was successful! Thank you for trying My Favorite PL Player! 
+            </Typography>
         </Grid>
     )
 }
