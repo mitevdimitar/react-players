@@ -29,7 +29,7 @@ function ShopCart() {
     return(
       <ProductConsumer>
         {(value) => {
-          const {products, quantityChange} = value;
+          const {products, quantityChange, emptyCart} = value;
           return (
             <Grid container justify="center" alignItems="center" className={classes.root}>
               <Grid container item justify="center" alignItems="center" direction="column" className={classes.cart}>
@@ -37,7 +37,7 @@ function ShopCart() {
                 <TotalRow products={products}/>
                 <Grid container item justify="flex-end" className={classes.buttonContainer}>
                   <Link to="/shop" className="details-button">Continue shopping</Link>
-                  <Link to="/checkout" className="details-button">Checkout</Link>
+                  <Link onClick={()=>emptyCart()} to="/checkout" className="details-button">Checkout</Link>
                 </Grid>
               </Grid>
             </Grid>

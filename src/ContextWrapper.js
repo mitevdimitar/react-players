@@ -73,12 +73,22 @@ class ContextWrapper extends React.Component {
         this.setState({products: currentProducts});
     }
 
+    emptyCart = () => {
+        const {products} = this.state;
+        let currentProducts = [...products]
+        for (let product of currentProducts) {
+            product.count = 0
+        }
+        this.setState({products: currentProducts});
+    }
+
     render() {
         return (
             <UserContext.Provider value={{...this.state, 
             handleDetails: this.handleDetails, 
             addToCart: this.addToCart,
-            quantityChange: this.quantityChange}}>
+            quantityChange: this.quantityChange,
+            emptyCart: this.emptyCart}}>
                 {this.props.children}
             </UserContext.Provider>
         )
