@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { Fireworks } from 'fireworks/lib/react'
@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Checkout() {
     const classes = useStyles();
+    const [showFireworks, setShowFireworks] = useState(true)
 
     const fxProps = {
       count: 3,
@@ -31,9 +32,13 @@ function Checkout() {
       })
     }
 
+    useEffect(()=>{
+      setTimeout(()=>setShowFireworks(false), 2000);
+    })
+
     return(
         <Grid container justify="center" alignItems="center" className={classes.root}>
-            <Fireworks {...fxProps} />
+            {showFireworks &&  <Fireworks {...fxProps} />}
             <Typography align="center" className={classes.text} variant="h3">
               Congratulations! Your virtual purchase was successful! Thank you for trying My Favorite PL Player! 
             </Typography>
