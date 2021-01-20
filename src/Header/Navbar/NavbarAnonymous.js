@@ -4,12 +4,13 @@ import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { makeStyles } from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
+import ShopCart from "../../Fanshop/ShopCart";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     border: '2px solid grey',
-    minHeight: "200px",
-    minWidth: "300px",
+    height: "300px",
+    width: "500px",
     padding: theme.spacing(1),
     backgroundColor: theme.palette.background.paper,
   },
@@ -47,7 +48,10 @@ function NavbarAnonymous() {
                 <ShoppingCartIcon style={{ color: 'white' }} />
               </IconButton>
               <Popper id={id} open={open} anchorEl={anchorEl} placement="bottom-start">
-               <div  className={classes.paper}  >Your cart is empty.</div>
+               <div className={classes.paper}>
+                 {/* Your cart is empty. */}
+                  <ShopCart className={classes.paper} />
+                </div>
               </Popper>
             </li>
             <li>
