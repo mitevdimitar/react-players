@@ -8,10 +8,9 @@ import ShopCart from "../../Fanshop/ShopCart";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    border: '2px solid grey',
-    height: "300px",
+    border: '2px solid #FAFAD2',
+    height: "324px",
     width: "500px",
-    padding: theme.spacing(1),
     backgroundColor: theme.palette.background.paper,
   },
 }));
@@ -49,8 +48,7 @@ function NavbarAnonymous() {
               </IconButton>
               <Popper id={id} open={open} anchorEl={anchorEl} placement="bottom-start">
                <div className={classes.paper}>
-                 {/* Your cart is empty. */}
-                  <ShopCart className={classes.paper} />
+                  <ShopCart inNavbar={true}/>
                 </div>
               </Popper>
             </li>

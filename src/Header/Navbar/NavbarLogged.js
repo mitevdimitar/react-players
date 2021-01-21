@@ -7,13 +7,13 @@ import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { makeStyles } from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
+import ShopCart from "../../Fanshop/ShopCart";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    border: '2px solid grey',
+    border: '2px solid #FAFAD2',
     minHeight: "200px",
-    minWidth: "300px",
-    padding: theme.spacing(1),
+    minWidth: "324px",
     backgroundColor: theme.palette.background.paper,
   },
 }));
@@ -82,7 +82,9 @@ function NavbarLogged(props) {
                 <ShoppingCartIcon  style={{ color: 'white' }}/>
               </IconButton>
               <Popper id={id} open={open} anchorEl={anchorEl}>
-               <div  className={classes.paper}  >Your cart is empty.</div>
+               <div  className={classes.paper}>
+                <ShopCart inNavbar={true}/>
+               </div>
               </Popper>
               <li>
                 <Link

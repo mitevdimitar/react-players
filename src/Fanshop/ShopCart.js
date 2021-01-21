@@ -8,10 +8,10 @@ import { ProductConsumer } from '../ContextWrapper';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      height: "75vh"
+      height: ({inNavbar})=> (!inNavbar && "75vh")
     },
     cart: {
-      width: "70%",
+      width: ({inNavbar})=> (inNavbar ? "100%" : "70%"),
       minHeight: "320px",
       background: "#234465",
       position: "relative"
@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-function ShopCart() {
-    const classes = useStyles();
+function ShopCart({inNavbar}) {
+    const classes = useStyles({inNavbar});
 
     return(
       <ProductConsumer>
