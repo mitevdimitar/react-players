@@ -5,21 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { makeStyles } from '@material-ui/core/styles';
-import Popper from '@material-ui/core/Popper';
-import ShopCart from "../../Fanshop/ShopCart";
+import NavbarDropdown from "./NavbarDropdown";
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    border: '2px solid #FAFAD2',
-    minHeight: "200px",
-    minWidth: "324px",
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
-
-function NavbarLogged(props) {
-  const classes = useStyles();
+function NavbarLogged() {
   const [redirect, setRedirect] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -81,11 +69,7 @@ function NavbarLogged(props) {
               <IconButton aria-describedby={id} onClick={(event) => handleClick(event)}>
                 <ShoppingCartIcon  style={{ color: 'white' }}/>
               </IconButton>
-              <Popper id={id} open={open} anchorEl={anchorEl}>
-               <div  className={classes.paper}>
-                <ShopCart inNavbar={true}/>
-               </div>
-              </Popper>
+              <NavbarDropdown id={id} open={open} anchorEl={anchorEl} />
               <li>
                 <Link
                   className="nav-button"

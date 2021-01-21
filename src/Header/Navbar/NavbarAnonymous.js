@@ -2,21 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { makeStyles } from '@material-ui/core/styles';
-import Popper from '@material-ui/core/Popper';
-import ShopCart from "../../Fanshop/ShopCart";
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    border: '2px solid #FAFAD2',
-    height: "324px",
-    width: "500px",
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
+import NavbarDropdown from "./NavbarDropdown";
 
 function NavbarAnonymous() {
-  const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -46,11 +34,7 @@ function NavbarAnonymous() {
               <IconButton aria-describedby={id} onClick={(event) => handleClick(event)}>
                 <ShoppingCartIcon style={{ color: 'white' }} />
               </IconButton>
-              <Popper id={id} open={open} anchorEl={anchorEl} placement="bottom-start">
-               <div className={classes.paper}>
-                  <ShopCart inNavbar={true}/>
-                </div>
-              </Popper>
+              <NavbarDropdown id={id} open={open} anchorEl={anchorEl} />
             </li>
             <li>
               <a className="nav-button" href="/register">
