@@ -14,7 +14,8 @@ const useStyles = makeStyles((theme) => ({
       width: ({inNavbar})=> (inNavbar ? "100%" : "70%"),
       minHeight: "320px",
       background: "#234465",
-      position: "relative"
+      position: "relative",
+      borderRadius: "20px"
     },
     buttonContainer: {
       position: "absolute",

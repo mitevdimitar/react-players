@@ -5,8 +5,9 @@ import ShopCart from "../../Fanshop/ShopCart";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-      border: '2px solid #FAFAD2',
-      height: "324px",
+      border: '3px solid #FAFAD2',
+      borderRadius: "20px",
+      height: "326px",
       width: "500px",
       [theme.breakpoints.down('sm')]: {
         width: '340px',
