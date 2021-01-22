@@ -37,8 +37,17 @@ function ShopCart({inNavbar}) {
                 {products.map(product=>  <CartRow key={product.id} product={product} quantityChange={quantityChange} />)}
                 <TotalRow products={products}/>
                 <Grid container item justify="flex-end" className={classes.buttonContainer}>
-                  <Link to="/shop" className="details-button">Continue shopping</Link>
-                  <Link onClick={()=>emptyCart()} to="/checkout" className="details-button">Checkout</Link>
+                  {inNavbar 
+                    ?
+                    <>
+                      <Link to="/cart" className="details-button">Go to cart</Link>
+                    </> 
+                    :
+                    <>
+                      <Link to="/shop" className="details-button">Continue shopping</Link>
+                      <Link onClick={()=>emptyCart()} to="/checkout" className="details-button">Checkout</Link>
+                    </> 
+                  }
                 </Grid>
               </Grid>
             </Grid>

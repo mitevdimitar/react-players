@@ -24,9 +24,9 @@ function NavbarAnonymous() {
           <Link className="button" to="/shop">
             Fanshop
           </Link>
-          <Link className="button" to="/cart">
+          {/* <Link className="button" to="/cart">
             Go to Cart
-          </Link>
+          </Link> */}
         </div>
         <div className="second-bar">
           <ul>
