@@ -34,7 +34,7 @@ function NavbarAnonymous() {
               <IconButton aria-describedby={id} onClick={(event) => handleClick(event)}>
                 <ShoppingCartIcon style={{ color: 'white' }} />
               </IconButton>
-              <NavbarDropdown id={id} open={open} anchorEl={anchorEl} />
+              <NavbarDropdown id={id} open={open} anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
             </li>
             <li>
               <a className="nav-button" href="/register">

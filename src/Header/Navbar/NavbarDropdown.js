@@ -16,13 +16,13 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function NavbarDropdown({id, open, anchorEl}) {
+function NavbarDropdown({id, open, anchorEl, setAnchorEl}) {
     const classes = useStyles();
 
     return (
         <Popper id={id} open={open} anchorEl={anchorEl} placement="bottom-start">
             <div className={classes.paper}>
-                <ShopCart inNavbar={true}/>
+                <ShopCart setAnchorEl={setAnchorEl} inNavbar={true}/>
             </div>
         </Popper>
     )

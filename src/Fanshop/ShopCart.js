@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-function ShopCart({inNavbar}) {
+function ShopCart({inNavbar, setAnchorEl}) {
     const classes = useStyles({inNavbar});
 
     return(
@@ -40,7 +40,7 @@ function ShopCart({inNavbar}) {
                   {inNavbar 
                     ?
                     <>
-                      <Link to="/cart" className="details-button">Go to cart</Link>
+                      <Link onClick={()=>setAnchorEl(null)} to="/cart" className="details-button">Go to cart</Link>
                     </> 
                     :
                     <>
