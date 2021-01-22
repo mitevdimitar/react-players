@@ -8,6 +8,9 @@ const useStyles = makeStyles((theme) => ({
       border: '2px solid #FAFAD2',
       height: "324px",
       width: "500px",
+      [theme.breakpoints.down('sm')]: {
+        width: '340px',
+      },
       backgroundColor: theme.palette.background.paper,
     },
   }));
