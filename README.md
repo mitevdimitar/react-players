@@ -8,10 +8,8 @@ You can give it a try by visiting https://favoriteplayer.netlify.app/
 <p>CSS3</p>
 <p>JavaScript</p>
 <p>React.js (bootstrapped with Create React App)</p>
-<p>npm</p>
-<p>GitHub</p>
+<p>Material-UI</p>
 <p>Firebase</p>
-<p>Visual Studio Code</p>
 
 <h3>DESCRIPTION</h3> 
 
