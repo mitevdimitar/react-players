@@ -39,28 +39,32 @@ function CartRow({product, quantityChange}) {
         }
     }
 
-    return(
-        <Grid container justify="center" alignItems="center" className={classes.row}>
-            <Grid container justify="center" item xs={2}>
-                <Avatar aria-label="logo" className={classes.avatar} src={require(`../img/${product.img}.png`)} />
+    if (product.count > 0) {
+        return(
+            <Grid container justify="center" alignItems="center" className={classes.row}>
+                <Grid container justify="center" item xs={2}>
+                    <Avatar aria-label="logo" className={classes.avatar} src={require(`../img/${product.img}.png`)} />
+                </Grid>
+                <Grid item xs={6} className={classes.title}>{product.title}</Grid>
+                <Grid container alignItems="center" item xs={1} className={classes.price}>{product.price} <AttachMoneyIcon style={{fontSize:"15px"}} /></Grid>
+                <Grid container justify="center" item xs={2}>
+                <TextField
+                    InputProps={{disableUnderline: true}}
+                    className={classes.number}
+                    id="standard-number"
+                    value={productQuantity}
+                    onChange={onQuantityChange}
+                    type="number"
+                />
+                </Grid>
+                <Grid container alignItems="center" item xs={1} className={classes.deleteIcon}>
+                    <HighlightOffIcon color="secondary" onClick={() => onQuantityChange(null, "delete")}/>
+                </Grid>
             </Grid>
-            <Grid item xs={6} className={classes.title}>{product.title}</Grid>
-            <Grid container alignItems="center" item xs={1} className={classes.price}>{product.price} <AttachMoneyIcon style={{fontSize:"15px"}} /></Grid>
-            <Grid container justify="center" item xs={2}>
-            <TextField
-                InputProps={{disableUnderline: true}}
-                className={classes.number}
-                id="standard-number"
-                value={productQuantity}
-                onChange={onQuantityChange}
-                type="number"
-            />
-            </Grid>
-            <Grid container alignItems="center" item xs={1} className={classes.deleteIcon}>
-                <HighlightOffIcon color="secondary" onClick={() => onQuantityChange(null, "delete")}/>
-            </Grid>
-        </Grid>
-    )
+        )
+    } else {
+        return null;
+    }
 }
 
 export default CartRow;
