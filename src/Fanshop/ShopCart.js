@@ -40,7 +40,7 @@ function ShopCart({inNavbar, setAnchorEl}) {
           return (
             <Grid container justify="center" alignItems="center" className={classes.root}>
               {productsInCart > 0 ? <Grid container item justify="center" alignItems="center" direction="column" className={classes.cart}>
-                {products.map(product=>  <CartRow key={product.id} product={product} quantityChange={quantityChange} />)}
+                {products.map(product => <CartRow key={product.id} product={product} quantityChange={quantityChange} />)}
                 <TotalRow products={products}/>
                 <Grid container item justify="flex-end" className={classes.buttonContainer}>
                   {inNavbar 
