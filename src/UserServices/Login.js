@@ -35,11 +35,11 @@ class Login extends React.Component {
             });
     }
 
-    handleGoogleLogin = async () => {
+    /* handleGoogleLogin = async () => {
         const user = await handleUser.loginWithGoogle();
         console.log(user)
         this.setState({ redirect: "/" })
-    }
+    } */
 
     render() {
         if (this.state.redirect) {
@@ -78,11 +78,11 @@ class Login extends React.Component {
                             Login with GOOGLE
                             </SocialButton>
                         </div> */}
-                        <div>
+                        {/* <div>
                             <button onClick={this.handleGoogleLogin}>
                                 Log in with Google
                             </button>
-                        </div>
+                        </div> */}
                     </form>               
                 </section>
             </React.Fragment>
