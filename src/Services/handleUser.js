@@ -25,6 +25,26 @@ const handleUser = {
             console.log(errorMessage)
         });    
     },
+    loginWithGoogle: () => {
+        let provider = new firebase.auth.GoogleAuthProvider();
+        return firebase.auth()
+            .signInWithPopup(provider)
+            .then((result) => {
+                /** @type {firebase.auth.OAuthCredential} */
+                //let credential = result.credential;
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                //var token = credential.accessToken;
+                // The signed-in user info.
+                let username = result.user.displayName;
+                return username;
+            }).catch((error) => {
+                // Handle Errors here.
+                var errorMessage = error.message;
+                console.log(errorMessage)
+                // The email of the user's account used.
+                //var email = error.email;
+            });
+    },
     logout: () => {
         return firebase
         .auth()

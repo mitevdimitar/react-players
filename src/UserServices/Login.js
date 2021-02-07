@@ -2,7 +2,7 @@ import React from 'react';
 import handleUser from '../Services/handleUser';
 import { Redirect } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
-import SocialButton from "./SocialLogin/SocialButton";
+//import SocialButton from "./SocialLogin/SocialButton";
 import './LoginRegister.css';
 
 class Login extends React.Component {
@@ -35,12 +35,10 @@ class Login extends React.Component {
             });
     }
 
-    handleSocialLogin = (e) => {
-        console.log(e);
-    }
-
-    handleSocialLoginFailure = (e) => {
-        console.log(e);
+    handleGoogleLogin = async () => {
+        const user = await handleUser.loginWithGoogle();
+        console.log(user)
+        this.setState({ redirect: "/" })
     }
 
     render() {
@@ -70,7 +68,7 @@ class Login extends React.Component {
                         />
                         <input className="button submit" type="submit" value="LOGIN" onClick={this.handleUserLogin}/>
                         <div>or</div>
-                        <div>
+                       {/*  <div>
                             <SocialButton
                                 provider='google'
                                 appId='AIzaSyAACkvIcq7rUP6626d14tu2UYEQGj7D_8Y'
@@ -79,6 +77,11 @@ class Login extends React.Component {
                             >
                             Login with GOOGLE
                             </SocialButton>
+                        </div> */}
+                        <div>
+                            <button onClick={this.handleGoogleLogin}>
+                                Log in with Google
+                            </button>
                         </div>
                     </form>               
                 </section>
