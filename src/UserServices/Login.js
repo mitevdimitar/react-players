@@ -69,12 +69,7 @@ class Login extends React.Component {
                         <input className="button submit" type="submit" value="LOGIN" onClick={this.handleUserLogin}/>
                         <div>or</div>
                        {/*  <div>
-                            <SocialButton
-                                provider='google'
-                                appId='AIzaSyAACkvIcq7rUP6626d14tu2UYEQGj7D_8Y'
-                                onLoginSuccess={this.handleSocialLogin}
-                                onLoginFailure={this.handleSocialLoginFailure}
-                            >
+                            <SocialButton>
                             Login with GOOGLE
                             </SocialButton>
                         </div> */}
