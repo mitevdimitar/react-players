@@ -13,8 +13,8 @@ You can give it a try by visiting https://favoriteplayer.netlify.app/
 
 <h3>DESCRIPTION</h3> 
 
-Web application (SPA) with client-side rendering using fetch, Firebase REST API and JSON.
-Register, Login and Logout functionality
+Web application (SPA) with client-side rendering using Firebase REST API.
+Authorization and Authentication functionality.
 All users can view ranking of Premier league soccer players sorted by likes and filtered by team.
 Logged in users can vote for other players and add their favorite players to the ranking.
 They are also able to edit or delete their own players.
