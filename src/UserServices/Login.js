@@ -2,6 +2,7 @@ import React from 'react';
 import handleUser from '../Services/handleUser';
 import { Redirect } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
+import SocialButton from "./SocialLogin/SocialButton";
 import './LoginRegister.css';
 
 class Login extends React.Component {
@@ -34,6 +35,14 @@ class Login extends React.Component {
             });
     }
 
+    handleSocialLogin = (e) => {
+        console.log(e);
+    }
+
+    handleSocialLoginFailure = (e) => {
+        console.log(e);
+    }
+
     render() {
         if (this.state.redirect) {
             return <Redirect to={this.state.redirect} />
@@ -41,26 +50,37 @@ class Login extends React.Component {
         return (
             <React.Fragment>
                 <section className="login">
-                        <form className="login-form" action="#/login" method="post">
-                            <h4>LOGIN</h4>
-                            <TextField 
-                                required 
-                                id="standard-required" 
-                                label="Email" 
-                                value={this.state.email} 
-                                onChange={this.handleEmailChange} 
-                            />
-                            <TextField
-                                required
-                                id="standard-password-input"
-                                label="Password"
-                                type="password"
-                                autoComplete="current-password"
-                                value={this.state.password} 
-                                onChange={this.handlePasswordChange}
-                            />
-                            <input className="button submit" type="submit" value="LOGIN" onClick={this.handleUserLogin}/>
-                        </form>               
+                    <form className="login-form" action="#/login" method="post">
+                        <h4>LOGIN</h4>
+                        <TextField 
+                            required 
+                            id="standard-required" 
+                            label="Email" 
+                            value={this.state.email} 
+                            onChange={this.handleEmailChange} 
+                        />
+                        <TextField
+                            required
+                            id="standard-password-input"
+                            label="Password"
+                            type="password"
+                            autoComplete="current-password"
+                            value={this.state.password} 
+                            onChange={this.handlePasswordChange}
+                        />
+                        <input className="button submit" type="submit" value="LOGIN" onClick={this.handleUserLogin}/>
+                        <div>or</div>
+                        <div>
+                            <SocialButton
+                                provider='google'
+                                appId='AIzaSyAACkvIcq7rUP6626d14tu2UYEQGj7D_8Y'
+                                onLoginSuccess={this.handleSocialLogin}
+                                onLoginFailure={this.handleSocialLoginFailure}
+                            >
+                            Login with GOOGLE
+                            </SocialButton>
+                        </div>
+                    </form>               
                 </section>
             </React.Fragment>
         )
