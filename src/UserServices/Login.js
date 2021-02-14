@@ -1,36 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import handleUser from '../Services/handleUser';
 import { Redirect } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 //import SocialButton from "./SocialLogin/SocialButton";
 import './LoginRegister.css';
 
-class Login extends React.Component {
+function Login() {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            email: '',
-            password: '',
-            redirect: null
-        };
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [redirect, setRedirect] = useState(null);
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
     }
 
-    handleEmailChange = (e) => {
-        this.setState({email: e.target.value});
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
     }
 
-    handlePasswordChange = (e) => {
-        this.setState({password: e.target.value});
-    }
-
-    handleUserLogin = (e) => {
+    const handleUserLogin = (e) => {
         e.preventDefault();
-        //firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-        handleUser.login(this.state.email, this.state.password)
-            .then(this.setState({ redirect: "/" }))
+        handleUser.login(email, password)
+            .then(setRedirect("/"))
             .catch(function(error) {
-                var errorMessage = error.message;
+                let errorMessage = error.message;
                 console.log(errorMessage);
             });
     }
@@ -41,48 +35,46 @@ class Login extends React.Component {
         this.setState({ redirect: "/" })
     } */
 
-    render() {
-        if (this.state.redirect) {
-            return <Redirect to={this.state.redirect} />
-          }
-        return (
-            <React.Fragment>
-                <section className="login">
-                    <form className="login-form" action="#/login" method="post">
-                        <h4>LOGIN</h4>
-                        <TextField 
-                            required 
-                            id="standard-required" 
-                            label="Email" 
-                            value={this.state.email} 
-                            onChange={this.handleEmailChange} 
-                        />
-                        <TextField
-                            required
-                            id="standard-password-input"
-                            label="Password"
-                            type="password"
-                            autoComplete="current-password"
-                            value={this.state.password} 
-                            onChange={this.handlePasswordChange}
-                        />
-                        <input className="button submit" type="submit" value="LOGIN" onClick={this.handleUserLogin}/>
-                        <div>or</div>
-                       {/*  <div>
-                            <SocialButton>
-                            Login with GOOGLE
-                            </SocialButton>
-                        </div> */}
-                        {/* <div>
-                            <button onClick={this.handleGoogleLogin}>
-                                Log in with Google
-                            </button>
-                        </div> */}
-                    </form>               
-                </section>
-            </React.Fragment>
-        )
-    }
+    if (redirect) {
+        return <Redirect to={redirect} />
+        }
+    return (
+        <>
+            <section className="login">
+                <form className="login-form" action="#/login" method="post">
+                    <h4>LOGIN</h4>
+                    <TextField 
+                        required 
+                        id="standard-required" 
+                        label="Email" 
+                        value={email} 
+                        onChange={handleEmailChange} 
+                    />
+                    <TextField
+                        required
+                        id="standard-password-input"
+                        label="Password"
+                        type="password"
+                        autoComplete="current-password"
+                        value={password} 
+                        onChange={handlePasswordChange}
+                    />
+                    <input className="button submit" type="submit" value="LOGIN" onClick={handleUserLogin}/>
+                    <div>or</div>
+                    {/*  <div>
+                        <SocialButton>
+                        Login with GOOGLE
+                        </SocialButton>
+                    </div> */}
+                    {/* <div>
+                        <button onClick={this.handleGoogleLogin}>
+                            Log in with Google
+                        </button>
+                    </div> */}
+                </form>               
+            </section>
+        </>
+    )
        
 }
 
