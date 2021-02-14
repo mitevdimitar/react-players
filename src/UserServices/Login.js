@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import handleUser from '../Services/handleUser';
 import { Redirect } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
-//import SocialButton from "./SocialLogin/SocialButton";
+import SocialButton from "./SocialLogin/SocialButton";
 import './LoginRegister.css';
 
 function Login() {
@@ -61,11 +61,9 @@ function Login() {
                     />
                     <input className="button submit" type="submit" value="LOGIN" onClick={handleUserLogin}/>
                     <div>or</div>
-                    {/*  <div>
-                        <SocialButton>
-                        Login with GOOGLE
-                        </SocialButton>
-                    </div> */}
+                     <div>
+                        <SocialButton />
+                    </div>
                     {/* <div>
                         <button onClick={this.handleGoogleLogin}>
                             Log in with Google
