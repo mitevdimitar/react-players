@@ -13,8 +13,8 @@ const useStyles = makeStyles((theme) => ({
         color: "rgba(237, 244, 253, 0.966)",
         textTransform: "none",
         "&:hover": {
-            background: "rgb(248, 215, 107)",
-            color: "rgb(0, 0, 0)"
+            background: "rgba(237, 244, 253, 0.966)",
+            color: "#234465"
         }
     },
   }));

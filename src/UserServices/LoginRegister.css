@@ -135,6 +135,10 @@ form label {
 	margin-top: 10%
 }
 
+input[type="submit" i] {
+	border: 2px solid #234465;
+}
+
 
 @media only screen and (max-width: 800px) {
 	.login form,

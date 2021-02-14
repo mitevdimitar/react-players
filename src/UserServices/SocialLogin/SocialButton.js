@@ -7,15 +7,15 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   button: {
     height: "45px",
-    border: "1px solid #234465",
-    borderRadius: "6px",
-    background: "white",
+    border: "2px solid #234465",
+    borderRadius: "0.4rem",
+    background: "rgba(237, 244, 253, 0.966)",
     fontWeight: "bold",
     color: "#234465",
     textTransform: "uppercase",
     "&:hover": {
         background: "#234465",
-        color: "white"
+        color: "rgba(237, 244, 253, 0.966)"
     }
   },
 }));
