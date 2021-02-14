@@ -3,10 +3,10 @@ import handleUser from '../Services/handleUser';
 import { Redirect } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import SocialButton from "./SocialLogin/SocialButton";
+import Grid from '@material-ui/core/Grid';
 import './LoginRegister.css';
 
 function Login() {
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(null);
@@ -29,11 +29,11 @@ function Login() {
             });
     }
 
-    /* handleGoogleLogin = async () => {
+    const handleGoogleLogin = async () => {
         const user = await handleUser.loginWithGoogle();
         console.log(user)
-        this.setState({ redirect: "/" })
-    } */
+        setRedirect("/");
+    }
 
     if (redirect) {
         return <Redirect to={redirect} />
@@ -60,15 +60,15 @@ function Login() {
                         onChange={handlePasswordChange}
                     />
                     <input className="button submit" type="submit" value="LOGIN" onClick={handleUserLogin}/>
-                    <div>or</div>
-                     <div>
-                        <SocialButton />
-                    </div>
-                    {/* <div>
-                        <button onClick={this.handleGoogleLogin}>
-                            Log in with Google
-                        </button>
-                    </div> */}
+                    <Grid 
+                        container 
+                        alignItems="center" 
+                        justify="center" 
+                        style={{marginTop: "10px", marginBottom: "10px"}}
+                    >
+                        or
+                    </Grid>
+                    <SocialButton handleGoogleLogin={handleGoogleLogin}/>
                 </form>               
             </section>
         </>

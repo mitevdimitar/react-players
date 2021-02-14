@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
  
-function SocialButton() {
+function SocialButton({ handleGoogleLogin }) {
     const classes = useStyles();
     const svgIcon = (
         <Icon>
@@ -29,7 +29,12 @@ function SocialButton() {
     );
 
     return (
-        <Button startIcon={svgIcon} variant="contained" className={classes.button}>
+        <Button 
+            startIcon={svgIcon} 
+            variant="contained" 
+            className={classes.button}
+            onClick={handleGoogleLogin}
+        >
             Continue with Google
         </Button>
     );
