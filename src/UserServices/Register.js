@@ -1,83 +1,70 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect } from "react-router-dom";
 import handleUser from '../Services/handleUser';
 import TextField from '@material-ui/core/TextField';
 import './LoginRegister.css';
 
-class Register extends React.Component {
-    
-    constructor(props) {
-        super(props);
-        this.state={
-            email: '',
-            password: '',
-            redirect: null
-        };
-        this.handleEmailChange = this.handleEmailChange.bind(this);
-        this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        this.handleUserRegister = this.handleUserRegister.bind(this);
+function Register() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [redirect, setRedirect] = useState(null);
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
     }
 
-    handleEmailChange(e) {
-        this.setState({email: e.target.value});
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
     }
 
-    handlePasswordChange(e) {
-        this.setState({password: e.target.value});
-    }
-
-    handleUserRegister(e) {
+    const handleUserRegister = (e) => {
         e.preventDefault();
-        handleUser.register(this.state.email, this.state.password)
-            .then(this.setState({ redirect: "/" }))
+        handleUser.register(email, password)
+            .then(setRedirect("/"))
             .catch(function(error) {
-                var errorMessage = error.message;
+                let errorMessage = error.message;
                 console.log(errorMessage);
             });
     }
 
-    componentDidMount() {
+    useEffect(()=> {
         let footer = document.getElementById("site-footer");
         footer.style.position = "absolute";
-    }
+        return () => { 
+            let footer = document.getElementById("site-footer");
+            footer.style.position = ""; 
+        }
+    })
 
-    componentWillUnmount() {
-        let footer = document.getElementById("site-footer");
-        footer.style.position = "";
-    }
-
-
-    render() {
-        if (this.state.redirect) {
-            return <Redirect to={this.state.redirect} />
-          }
+    if (redirect) {
+        return <Redirect to={redirect} />
+    } else {
         return (
-                <section className="register">
-                    <form className="register-form" action="#/register" method="post">
-                        <fieldset>
-                            <h4>REGISTER</h4>
-                            <TextField 
-                                required id="standard-required" 
-                                label="Email" 
-                                value={this.state.email} 
-                                onChange={this.handleEmailChange} />
-                            <TextField
-                                required
-                                id="standard-password-input"
-                                label="Password"
-                                type="password"
-                                autoComplete="current-password"
-                                value={this.state.password} 
-                                onChange={this.handlePasswordChange}
-                                />
-                            {/* <EmailInput email={this.state.email} handleEmailChange={this.handleEmailChange}/>
-                            <PasswordInput password={this.state.password} handlePasswordChange={this.handlePasswordChange}/> */}
-                            <input className="button submit" type="submit" value="REGISTER" onClick={this.handleUserRegister}/>
-                        </fieldset>
-                    </form>
-                </section>
+            <section className="register">
+                <form className="register-form" action="#/register" method="post">
+                    <fieldset>
+                        <h4>REGISTER</h4>
+                        <TextField 
+                            required id="standard-required" 
+                            label="Email" 
+                            value={email} 
+                            onChange={handleEmailChange} />
+                        <TextField
+                            required
+                            id="standard-password-input"
+                            label="Password"
+                            type="password"
+                            autoComplete="current-password"
+                            value={password} 
+                            onChange={handlePasswordChange}
+                        />
+                        <input className="button submit" type="submit" value="REGISTER" onClick={handleUserRegister}/>
+                    </fieldset>
+                </form>
+            </section>
         )
     }
+    
 }
 
 export default Register
