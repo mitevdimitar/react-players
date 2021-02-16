@@ -36,11 +36,11 @@ function NavbarAnonymous() {
               </IconButton>
               <NavbarDropdown id={id} open={open} anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
             </li>
-            <li>
+            {/* <li>
               <a className="nav-button" href="/register">
                 <i className="fas fa-user-plus"></i> Register
               </a>
-            </li>
+            </li> */}
             <li>
               <a className="nav-button" href="/login">
                 <i className="fas fa-sign-in-alt"></i> Login

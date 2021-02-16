@@ -65,7 +65,7 @@ nav.navbar ul li:hover > a {
   align-items: center;
 }
 .navbar .first-bar a {
-  /* color: white; */
+  color: white;
   margin-right: 0.5rem;
 }
 .navbar .first-bar input {

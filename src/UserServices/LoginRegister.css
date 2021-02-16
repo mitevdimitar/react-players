@@ -107,7 +107,7 @@ form label {
 .login h4, .register h4 {
 	text-align: center;
 	margin-top: 0;
-	margin-bottom: 20%
+	margin-bottom: 10%
 }
 
 .login-form {
@@ -115,7 +115,7 @@ form label {
 	background: rgba(249, 249, 249, 0.829);
 	border-radius: 1rem;
 	box-shadow: 0 0 1rem 0.1rem rgba(0, 0, 0, 0.1);
-	padding: 3em;
+	padding: 2em 3em;
 	position: absolute;
 	display: flex;
 	flex-direction: column;
@@ -128,7 +128,7 @@ form label {
 }
 
 .login .MuiInputBase-root, .register .MuiInputBase-root {
-	margin-bottom: 15%;
+	margin-bottom: 10%;
 }
 
 .login .button, .register .button {
@@ -137,6 +137,14 @@ form label {
 
 input[type="submit" i] {
 	border: 2px solid #234465;
+}
+
+.register-prompt a {
+	color: blue
+}
+
+.register-prompt a:link, a:visited {
+    color: blue;
 }
 
 

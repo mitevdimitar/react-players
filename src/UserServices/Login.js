@@ -69,6 +69,9 @@ function Login() {
                         or
                     </Grid>
                     <SocialButton handleGoogleLogin={handleGoogleLogin}/>
+                    <Grid className="register-prompt" container justify="center" style={{marginTop: "20px", fontSize: "0.7rem" }}>
+                        Don't have account? <a href={"/register"}>&nbsp; Register here</a>
+                    </Grid>
                 </form>               
             </section>
         </>
