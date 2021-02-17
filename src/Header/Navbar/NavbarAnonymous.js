@@ -43,7 +43,7 @@ function NavbarAnonymous() {
             </li> */}
             <li>
               <a className="nav-button" href="/login">
-                <i className="fas fa-sign-in-alt"></i> Login
+                <i className="fas fa-sign-in-alt"></i> Sign In
               </a>
             </li>
           </ul>

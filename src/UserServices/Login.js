@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import SocialButton from "./SocialLogin/SocialButton";
 import Grid from '@material-ui/core/Grid';
+import Avatar from '@material-ui/core/Avatar';
 import './LoginRegister.css';
 
 function Login() {
@@ -42,7 +43,10 @@ function Login() {
         <>
             <section className="login">
                 <form className="login-form" action="#/login" method="post">
-                    <h4>LOGIN</h4>
+                    <Grid container justify="center">
+                        <Avatar alt="Premier League Logo" src={require(`../img/premier-league-logo.png`)} />
+                    </Grid>
+                    <h4>SIGN IN</h4>
                     <TextField 
                         required 
                         id="standard-required" 
@@ -59,7 +63,7 @@ function Login() {
                         value={password} 
                         onChange={handlePasswordChange}
                     />
-                    <input className="button submit" type="submit" value="LOGIN" onClick={handleUserLogin}/>
+                    <input className="button submit" type="submit" value="SIGN IN" onClick={handleUserLogin}/>
                     <Grid 
                         container 
                         alignItems="center" 
@@ -70,7 +74,7 @@ function Login() {
                     </Grid>
                     <SocialButton handleGoogleLogin={handleGoogleLogin}/>
                     <Grid className="register-prompt" container justify="center" style={{marginTop: "20px", fontSize: "0.7rem" }}>
-                        Don't have account? <a href={"/register"}>&nbsp; Register here</a>
+                        Don't have account? <a href={"/register"}>&nbsp; Sign up here</a>
                     </Grid>
                 </form>               
             </section>

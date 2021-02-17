@@ -43,7 +43,7 @@ function Register() {
             <section className="register">
                 <form className="register-form" action="#/register" method="post">
                     <fieldset>
-                        <h4>REGISTER</h4>
+                        <h4>SIGN UP</h4>
                         <TextField 
                             required id="standard-required" 
                             label="Email" 

@@ -106,8 +106,8 @@ form label {
 
 .login h4, .register h4 {
 	text-align: center;
-	margin-top: 0;
-	margin-bottom: 10%
+	margin-top: 10px;
+	margin-bottom: 5%
 }
 
 .login-form {
