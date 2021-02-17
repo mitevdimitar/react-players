@@ -15,6 +15,6 @@ footer p {
 }
 
 .linkedin-link {
-    color: white;
+    color: white !important;
     margin-left: 5px
 }
