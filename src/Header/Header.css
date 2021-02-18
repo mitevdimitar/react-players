@@ -47,7 +47,7 @@ nav.navbar ul li a {
 nav.navbar ul li a:hover,
 nav.navbar ul li:hover > a {
   background: rgba(237, 244, 253, 0.966);
-  color: #234465;
+  color: #234465 !important;
   font-weight: bold;
 }
 .dashboard nav {
