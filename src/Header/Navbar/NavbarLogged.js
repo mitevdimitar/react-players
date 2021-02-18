@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import firebase from '../../Services/firebase';
 import { Link, Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,10 +6,13 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import NavbarDropdown from "./NavbarDropdown";
+import { UserContext } from '../../ContextWrapper';
 
 function NavbarLogged() {
   const [redirect, setRedirect] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
+  const auth = useContext(UserContext);
+  const userName = auth.user.displayName;
 
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
@@ -65,7 +68,7 @@ function NavbarLogged() {
           </div>
           <div className="second-bar">
             <ul>
-              <li>Welcome!</li>
+              <li>{`Welcome, ${userName}!`}</li>
               <IconButton aria-describedby={id} onClick={(event) => handleClick(event)}>
                 <ShoppingCartIcon  style={{ color: 'white' }}/>
               </IconButton>
