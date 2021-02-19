@@ -31,8 +31,8 @@ function TotalRow({products}) {
     return(
         <Grid container justify="center" alignItems="center" className={classes.row}>
             <Grid item xs={2}></Grid>
-            <Grid className={classes.total} item xs={6}>Total</Grid>
-            <Grid container alignItems="center" item xs={1} className={classes.price}>{totalAmount} <AttachMoneyIcon style={{fontSize:"15px"}} /></Grid>
+            <Grid className={classes.total} item xs={5}>Total</Grid>
+            <Grid container justify="center" alignItems="center" item xs={2} className={classes.price}>{totalAmount} <AttachMoneyIcon style={{fontSize:"15px"}} /></Grid>
             <Grid item xs={3}></Grid>
         </Grid>
     )
