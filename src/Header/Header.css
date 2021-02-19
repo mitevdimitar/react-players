@@ -40,7 +40,7 @@ nav.navbar ul li a {
   text-decoration: none;
   font-weight: bold;
   background: #234465;
-  color: rgba(237, 244, 253, 0.966);
+  color: rgba(237, 244, 253, 0.966) !important;
 }
 .button:hover,
 .details-button:hover,
