@@ -4,9 +4,9 @@ import { Link, Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import IconButton from '@material-ui/core/IconButton';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import NavbarDropdown from "./NavbarDropdown";
 import { UserContext } from '../../ContextWrapper';
+import CartBadge from "../../Components/CartBadge";
 
 function NavbarLogged() {
   const [redirect, setRedirect] = useState(null);
@@ -70,7 +70,7 @@ function NavbarLogged() {
             <ul>
               <li>{`Welcome, ${userName}!`}</li>
               <IconButton aria-describedby={id} onClick={(event) => handleClick(event)}>
-                <ShoppingCartIcon  style={{ color: 'white' }}/>
+                <CartBadge />
               </IconButton>
               <NavbarDropdown id={id} open={open} anchorEl={anchorEl} />
               <li>

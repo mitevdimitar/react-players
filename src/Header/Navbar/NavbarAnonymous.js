@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import NavbarDropdown from "./NavbarDropdown";
+import CartBadge from "../../Components/CartBadge";
 
 function NavbarAnonymous() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -32,7 +32,7 @@ function NavbarAnonymous() {
           <ul>
             <li>
               <IconButton aria-describedby={id} onClick={(event) => handleClick(event)}>
-                <ShoppingCartIcon style={{ color: 'white' }} />
+                <CartBadge />
               </IconButton>
               <NavbarDropdown id={id} open={open} anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
             </li>
