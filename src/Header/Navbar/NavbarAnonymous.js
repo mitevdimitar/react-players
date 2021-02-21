@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import NavbarDropdown from "./NavbarDropdown";
 import CartBadge from "../../Components/CartBadge";
+import { UserContext } from '../../ContextWrapper';
 
 function NavbarAnonymous() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -13,6 +14,11 @@ function NavbarAnonymous() {
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popper' : undefined;
+
+  const auth = useContext(UserContext);
+  const products = auth.products;
+  const productCounts = products.map(product=>product.count);
+  const productsInCart = productCounts.reduce((a, b) => a + b, 0);
 
   return (
     <section className="navbar-anonymous">
@@ -32,7 +38,7 @@ function NavbarAnonymous() {
           <ul>
             <li>
               <IconButton aria-describedby={id} onClick={(event) => handleClick(event)}>
-                <CartBadge />
+                <CartBadge count={productsInCart}/>
               </IconButton>
               <NavbarDropdown id={id} open={open} anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
             </li>

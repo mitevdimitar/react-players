@@ -23,10 +23,10 @@ const StyledBadge = withStyles((theme) => ({
   },
 }))(Badge);
 
-export default function CustomizedBadges() {
+export default function CustomizedBadges({ count }) {
     const classes = useStyles();
   return (
-      <StyledBadge badgeContent={4} color="secondary">
+      <StyledBadge badgeContent={count} color="secondary">
         <ShoppingCartIcon className={classes.cart} />
       </StyledBadge>
   );

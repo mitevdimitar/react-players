@@ -13,6 +13,9 @@ function NavbarLogged() {
   const [anchorEl, setAnchorEl] = useState(null);
   const auth = useContext(UserContext);
   const userName = auth.user.displayName;
+  const products = auth.products;
+  const productCounts = products.map(product=>product.count);
+  const productsInCart = productCounts.reduce((a, b) => a + b, 0);
 
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
@@ -70,10 +73,10 @@ function NavbarLogged() {
             <ul>
               <li>{`Welcome, ${userName}!`}</li>
               <IconButton aria-describedby={id} onClick={(event) => handleClick(event)}>
-                <CartBadge />
+                <CartBadge count={productsInCart} />
               </IconButton>
               <NavbarDropdown id={id} open={open} anchorEl={anchorEl} />
-              <li>
+              <li style={{marginLeft: "10px"}}>
                 <Link
                   className="nav-button"
                   to="/logout"
