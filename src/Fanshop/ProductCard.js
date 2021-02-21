@@ -13,6 +13,7 @@ import { withRouter } from "react-router";
 //import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import Tooltip from '@material-ui/core/Tooltip';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -65,9 +66,11 @@ function ProductCard( {img, name, info, company, handleDetails, addToCart, id, h
           <Avatar aria-label="logo" className={classes.avatar} src={require(`../img/premier-league-logo.png`)} />
         }
         action={
-          <IconButton aria-label="shop" onClick={() => handleOpen(id)}>
-            <ShoppingCartIcon />
-          </IconButton>
+          <Tooltip title="Add to cart" placement="top">
+            <IconButton aria-label="shop" onClick={() => handleOpen(id)}>
+              <ShoppingCartIcon />
+            </IconButton>
+          </Tooltip>
         }
         title={name}
         subheader={company}
