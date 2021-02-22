@@ -14,6 +14,7 @@ import { withRouter } from "react-router";
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import Tooltip from '@material-ui/core/Tooltip';
+import { Grid } from '@material-ui/core';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -27,10 +28,20 @@ const useStyles = makeStyles((theme) => ({
     height: 0,
     paddingTop: '56.25%', // 16:9
     backgroundSize: "contain",
-    cursor: "pointer"
+    cursor: "pointer",
+    width: "100%"
+  },
+  priceTag: {
+    position: "relative",
   },
   avatar: {
     backgroundColor: red[500],
+  },
+  priceAvatar: {
+    backgroundColor: "#234465",
+    position: "absolute",
+    right: "40px",
+    bottom: "10px"
   },
   snackBar: {
     top: "90px",
@@ -38,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function ProductCard( {img, name, info, company, handleDetails, addToCart, id, history, products} ) {
+function ProductCard( {img, name, info, company, handleDetails, addToCart, id, history, price} ) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -80,15 +91,24 @@ function ProductCard( {img, name, info, company, handleDetails, addToCart, id, h
           Product added to cart!
         </Alert>
       </Snackbar>
-      <CardMedia
-        className={classes.media}
-        image={require(`../img/${img}.png`)}
-        title={name}
-        onClick={()=>{
-            handleDetails(id);
-            history.push("/product-details");
-        }}
-      />
+      <Grid container>
+        <Grid container item xs={10}>
+          <CardMedia
+            className={classes.media}
+            image={require(`../img/${img}.png`)}
+            title={name}
+            onClick={()=>{
+                handleDetails(id);
+                history.push("/product-details");
+            }}
+          />
+        </Grid>
+        <Grid container item xs={2} className={classes.priceTag}>
+          <Avatar className={classes.priceAvatar}>
+            {`$${price}`}
+          </Avatar>
+        </Grid>
+      </Grid>
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {info}
