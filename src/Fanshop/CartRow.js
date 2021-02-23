@@ -46,7 +46,7 @@ function CartRow({product, quantityChange}) {
                     <Avatar aria-label="logo" className={classes.avatar} src={require(`../img/${product.img}-tumb.png`)} />
                 </Grid>
                 <Grid item xs={5} className={classes.title}>{product.title}</Grid>
-                <Grid container justify="center" alignItems="center" item xs={2} className={classes.price}>{product.price} <AttachMoneyIcon style={{fontSize:"15px"}} /></Grid>
+                <Grid container justify="center" alignItems="center" item xs={2} className={classes.price}> <AttachMoneyIcon style={{fontSize:"15px"}} />{product.price}</Grid>
                 <Grid container justify="center" item xs={2}>
                 <TextField
                     InputProps={{disableUnderline: true}}

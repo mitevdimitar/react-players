@@ -15,7 +15,7 @@ const ProductDetails = () => {
                                 <div className="product-text">
                                     <h5>{title}</h5>
                                     <div>
-                                        {price}<span>USD</span>
+                                        <span>$</span>{price}
                                     </div>
                                     <p>
                                         {info}

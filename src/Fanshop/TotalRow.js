@@ -32,7 +32,7 @@ function TotalRow({products}) {
         <Grid container justify="center" alignItems="center" className={classes.row}>
             <Grid item xs={2}></Grid>
             <Grid className={classes.total} item xs={5}>Total</Grid>
-            <Grid container justify="center" alignItems="center" item xs={2} className={classes.price}>{totalAmount} <AttachMoneyIcon style={{fontSize:"15px"}} /></Grid>
+            <Grid container justify="center" alignItems="center" item xs={2} className={classes.price}> <AttachMoneyIcon style={{fontSize:"15px"}} />{totalAmount}</Grid>
             <Grid item xs={3}></Grid>
         </Grid>
     )
