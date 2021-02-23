@@ -59,7 +59,7 @@ function ShopCart({inNavbar, setAnchorEl}) {
               : 
               <Grid className={classes.emptyCartContainer} container item alignItems="center" justify="center" direction="column">
                 <Typography>Cart it empty!</Typography>
-                <Typography>Add products from fanshop!</Typography>
+                <Typography>You can <Link to="/shop" onClick={()=>setAnchorEl(null)}>add</Link> products from fanshop!</Typography>
               </Grid>
               }
             </Grid>
