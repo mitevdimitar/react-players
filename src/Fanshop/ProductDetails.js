@@ -6,7 +6,7 @@ const ProductDetails = () => {
         return (
                 <ProductConsumer>
                     {(value) => {
-                        const {img, title, price, info} = value.productDetails;
+                        const {img, title, price, info, id} = value.productDetails;
                         return (
                             <div className="product-details-container">
                                 <div>
@@ -21,7 +21,7 @@ const ProductDetails = () => {
                                         {info}
                                     </p>
                                     <Link to="/shop" className="details-button">Continue shopping</Link>
-                                    <Link to="/fanshop" className="details-button">Add to cart</Link>
+                                    <Link to="/cart" onClick={()=>value.addToCart(id)} className="details-button">Add to cart</Link>
                                 </div>
                             </div>
                         )
