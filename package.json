@@ -27,7 +27,8 @@
     "react-scripts": "3.4.0",
     "react-social-login": "^3.4.10",
     "redux": "^4.0.5",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "typescript": "^4.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
